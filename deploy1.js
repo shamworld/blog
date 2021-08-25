@@ -1,3 +1,14 @@
+/*
+ * @message: 描述
+ * @Author: Roy
+ * @Email: @163.com
+ * @Github: @163.com
+ * @Date: 2021-01-09 15:35:07
+ * @LastEditors: Roy
+ * @LastEditTime: 2021-08-25 18:39:40
+ * @Deprecated: 否
+ * @FilePath: /my_blog/deploy1.js
+ */
 const shelljs = require('shelljs');
 const Rsync = require('rsync');//数据同步
 const path = require('path');
@@ -9,8 +20,8 @@ const [
 ] = argv._;
 
 const host_map = {
-    dev: 'root@115.28.139.70:/var/www/test',
-    prod: 'root@115.28.139.70:/var/www/my_blog',
+    dev: 'root@xxx:/var/www/test',
+    prod: 'root@xxx:/var/www/my_blog',
 }
 // 用法node deploy.js dev
 if (!host_map[targetName]) {
