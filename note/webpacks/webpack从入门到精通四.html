@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>webpack从入门到精通(四) | 码农机器人</title>
+    <meta name="generator" content="VuePress 1.5.3">
+    <link rel="icon" href="/logo.jpg">
+    <meta name="description" content="努力向前">
+    <link rel="preload" href="/assets/css/0.styles.36f06804.css" as="style"><link rel="preload" href="/assets/js/app.635c9f5f.js" as="script"><link rel="preload" href="/assets/js/2.8fa949b0.js" as="script"><link rel="preload" href="/assets/js/96.986bbd5b.js" as="script"><link rel="prefetch" href="/assets/js/10.7c8b8f5f.js"><link rel="prefetch" href="/assets/js/100.3c7960ab.js"><link rel="prefetch" href="/assets/js/101.6c2fe464.js"><link rel="prefetch" href="/assets/js/102.23366a73.js"><link rel="prefetch" href="/assets/js/103.bcf65284.js"><link rel="prefetch" href="/assets/js/104.568503e2.js"><link rel="prefetch" href="/assets/js/105.38ad24c1.js"><link rel="prefetch" href="/assets/js/11.6cd5c7c3.js"><link rel="prefetch" href="/assets/js/12.bb621195.js"><link rel="prefetch" href="/assets/js/13.47b458b8.js"><link rel="prefetch" href="/assets/js/14.ad627559.js"><link rel="prefetch" href="/assets/js/15.362b19b4.js"><link rel="prefetch" href="/assets/js/16.97504e73.js"><link rel="prefetch" href="/assets/js/17.44271299.js"><link rel="prefetch" href="/assets/js/18.ab22ca57.js"><link rel="prefetch" href="/assets/js/19.1b110d91.js"><link rel="prefetch" href="/assets/js/20.2fc66560.js"><link rel="prefetch" href="/assets/js/21.f50c5a6c.js"><link rel="prefetch" href="/assets/js/22.d6bda881.js"><link rel="prefetch" href="/assets/js/23.fe0780f1.js"><link rel="prefetch" href="/assets/js/24.dd1d0b8a.js"><link rel="prefetch" href="/assets/js/25.59d12640.js"><link rel="prefetch" href="/assets/js/26.2f8a3456.js"><link rel="prefetch" href="/assets/js/27.522fbfac.js"><link rel="prefetch" href="/assets/js/28.cca98502.js"><link rel="prefetch" href="/assets/js/29.c6511ca2.js"><link rel="prefetch" href="/assets/js/3.6421eb0c.js"><link rel="prefetch" href="/assets/js/30.15bab7f6.js"><link rel="prefetch" href="/assets/js/31.c81de4e6.js"><link rel="prefetch" href="/assets/js/32.d334de35.js"><link rel="prefetch" href="/assets/js/33.29d19670.js"><link rel="prefetch" href="/assets/js/34.d4858338.js"><link rel="prefetch" href="/assets/js/35.bf5e3504.js"><link rel="prefetch" href="/assets/js/36.802016a5.js"><link rel="prefetch" href="/assets/js/37.3616686d.js"><link rel="prefetch" href="/assets/js/38.29286bdc.js"><link rel="prefetch" href="/assets/js/39.b40cf5ab.js"><link rel="prefetch" href="/assets/js/4.6f69a0ec.js"><link rel="prefetch" href="/assets/js/40.c3bbb2fc.js"><link rel="prefetch" href="/assets/js/41.f953c67e.js"><link rel="prefetch" href="/assets/js/42.02677496.js"><link rel="prefetch" href="/assets/js/43.e6cfe4fd.js"><link rel="prefetch" href="/assets/js/44.a58942d9.js"><link rel="prefetch" href="/assets/js/45.fd722fb1.js"><link rel="prefetch" href="/assets/js/46.b9d69cbf.js"><link rel="prefetch" href="/assets/js/47.375be503.js"><link rel="prefetch" href="/assets/js/48.3f3bb523.js"><link rel="prefetch" href="/assets/js/49.e25e5d8b.js"><link rel="prefetch" href="/assets/js/5.83a14923.js"><link rel="prefetch" href="/assets/js/50.9e7c9041.js"><link rel="prefetch" href="/assets/js/51.a4bcd1c6.js"><link rel="prefetch" href="/assets/js/52.6053f1b0.js"><link rel="prefetch" href="/assets/js/53.51b3dc9e.js"><link rel="prefetch" href="/assets/js/54.04000b77.js"><link rel="prefetch" href="/assets/js/55.dfd6958e.js"><link rel="prefetch" href="/assets/js/56.af0bbb31.js"><link rel="prefetch" href="/assets/js/57.07046196.js"><link rel="prefetch" href="/assets/js/58.f8f11464.js"><link rel="prefetch" href="/assets/js/59.a610c2a7.js"><link rel="prefetch" href="/assets/js/6.e9785d7a.js"><link rel="prefetch" href="/assets/js/60.91f93406.js"><link rel="prefetch" href="/assets/js/61.6f738a6e.js"><link rel="prefetch" href="/assets/js/62.d6983dac.js"><link rel="prefetch" href="/assets/js/63.910ba4b3.js"><link rel="prefetch" href="/assets/js/64.5c7b323e.js"><link rel="prefetch" href="/assets/js/65.69e5c01a.js"><link rel="prefetch" href="/assets/js/66.cdf99b7f.js"><link rel="prefetch" href="/assets/js/67.c87827d3.js"><link rel="prefetch" href="/assets/js/68.b52b2359.js"><link rel="prefetch" href="/assets/js/69.596d3ed6.js"><link rel="prefetch" href="/assets/js/7.061fbcc8.js"><link rel="prefetch" href="/assets/js/70.223932fc.js"><link rel="prefetch" href="/assets/js/71.ccb4e9c0.js"><link rel="prefetch" href="/assets/js/72.7f6e5be8.js"><link rel="prefetch" href="/assets/js/73.75ba8243.js"><link rel="prefetch" href="/assets/js/74.f63cf2d8.js"><link rel="prefetch" href="/assets/js/75.e0ce1a5b.js"><link rel="prefetch" href="/assets/js/76.e1351efe.js"><link rel="prefetch" href="/assets/js/77.2a7ce443.js"><link rel="prefetch" href="/assets/js/78.b62cac30.js"><link rel="prefetch" href="/assets/js/79.45fbec9b.js"><link rel="prefetch" href="/assets/js/8.3e18062c.js"><link rel="prefetch" href="/assets/js/80.264e2b4b.js"><link rel="prefetch" href="/assets/js/81.2e6dafcb.js"><link rel="prefetch" href="/assets/js/82.fe0c7c9b.js"><link rel="prefetch" href="/assets/js/83.a2f8e639.js"><link rel="prefetch" href="/assets/js/84.7f5ae216.js"><link rel="prefetch" href="/assets/js/85.82d0c1b2.js"><link rel="prefetch" href="/assets/js/86.da596212.js"><link rel="prefetch" href="/assets/js/87.7e9088af.js"><link rel="prefetch" href="/assets/js/88.5de5c2b3.js"><link rel="prefetch" href="/assets/js/89.3617ee9e.js"><link rel="prefetch" href="/assets/js/9.b23d8b68.js"><link rel="prefetch" href="/assets/js/90.00fd6ed3.js"><link rel="prefetch" href="/assets/js/91.95706bfb.js"><link rel="prefetch" href="/assets/js/92.fe0b87c9.js"><link rel="prefetch" href="/assets/js/93.6c3293b4.js"><link rel="prefetch" href="/assets/js/94.39ec7ebe.js"><link rel="prefetch" href="/assets/js/95.53334ec5.js"><link rel="prefetch" href="/assets/js/97.628874d3.js"><link rel="prefetch" href="/assets/js/98.28ef6088.js"><link rel="prefetch" href="/assets/js/99.66b3963a.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.36f06804.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.jpg" alt="码农机器人" class="logo"> <span class="site-name can-hide">码农机器人</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note/" class="nav-link router-link-active">
+  博客
+</a></div><div class="nav-item"><a href="/react/" class="nav-link">
+  react
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note/" class="nav-link router-link-active">
+  博客
+</a></div><div class="nav-item"><a href="/react/" class="nav-link">
+  react
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>建立前端知识体系</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Vue源码分析</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>提效赋能 前端工程化篇</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>全栈赋能 Node篇</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>程序员PLUS篇</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>HTTP</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>webpack</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/note/webpacks/webpack.html" class="sidebar-link">webpack</a></li><li><a href="/note/webpacks/webpack从入门到精通一.html" class="sidebar-link">webpack从入门到精通(一)</a></li><li><a href="/note/webpacks/webpack从入门到精通二.html" class="sidebar-link">webpack从入门到精通(二)</a></li><li><a href="/note/webpacks/webpack从入门到精通三.html" class="sidebar-link">webpack从入门到精通(三)</a></li><li><a href="/note/webpacks/webpack从入门到精通四.html" class="active sidebar-link">webpack从入门到精通(四)</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note/webpacks/webpack从入门到精通四.html#module" class="sidebar-link">module</a></li><li class="sidebar-sub-header"><a href="/note/webpacks/webpack从入门到精通四.html#图片的处理" class="sidebar-link">图片的处理</a></li></ul></li><li><a href="/note/webpacks/webpack从入门到精通四.html" class="active sidebar-link">webpack从入门到精通(四)</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note/webpacks/webpack从入门到精通四.html#module" class="sidebar-link">module</a></li><li class="sidebar-sub-header"><a href="/note/webpacks/webpack从入门到精通四.html#图片的处理" class="sidebar-link">图片的处理</a></li></ul></li><li><a href="/note/webpacks/webpack4源码.html" class="sidebar-link">webpack4源码</a></li><li><a href="/note/webpacks/手写简易webpack.html" class="sidebar-link">手写简易webpack</a></li><li><a href="/note/webpacks/webpack性能优化.html" class="sidebar-link">webpack性能优化</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>性能优化</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Flutter</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>习题</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>忍者秘籍书</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="webpack从入门到精通-四"><a href="#webpack从入门到精通-四" class="header-anchor">#</a> webpack从入门到精通(四)</h1> <p>今天我们来学习webpack的其他配置----module</p> <h2 id="module"><a href="#module" class="header-anchor">#</a> module</h2> <p>这个module有什么用呢，它可以让我们把webpack里的模块通过配置，定义的规则变成我们想要的东西，因为webpack只知道js文件，其他的如less，sass，es6等等其他的文件那就无法识别，所以就需要我们去定义规则让webpack可以识别去编译对应的文件让生成浏览器可以识别的html，css，js，而想要编译打包这些文件就需要借助loader，官方的介绍也是这样:</p> <p><img src="/webpacks/20200321093938279.png" alt=""></p> <p>现在我们就来试试从样式开始，从之前的配置我们可以看到，我们没有样式css，那要什么引入呢，这里就是要通过import来注入对应的样式，不过之前我们也说过，webpack只是别js文件，所以为了让webpack可以正确的编译css，我们需要两个插件</p> <div class="language- extra-class"><pre class="language-text"><code>style-loader   //把处理完的css放到style标签里
+css-loader     //处理css
+</code></pre></div><p>第一步还是通过安装包:</p> <p><code>npm i style-loader css-loader -D</code></p> <p>然后添加css文件，并写样式:</p> <p><img src="/webpacks/1602511654150.jpg" alt=""></p> <p>在webpack.config.js配置解析CSS文件:</p> <div class="language- extra-class"><pre class="language-text"><code>module: {
+	rules: [{
+		test: /\.css$/, //以点开始css结尾的文件
+		use: ['style-loader', 'css-loader'] //顺序不能搞错
+	}]
+},
+
+</code></pre></div><p>在前面讲到，入口文件在entry指定的文件里，在入口文件里引入样式，路径对应自己创建的css文件路径</p> <p><code>import '../css/index.css';</code></p> <p>最后我们只需一下 npm run dev 就会看见 我们写的样式会被编译在html文件里面了</p> <p><img src="/webpacks/1602515613543.jpg" alt=""></p> <p>这里我们会发现webpack把所有的css都直接引入到头部了，如果样式少的话那还可以，但如果样式太多了话就会导致加载缓慢，样式冲突，命名重叠等问题，这样我们可以使用<a href="https://www.cnblogs.com/blackgan/p/10590540.html" target="_blank" rel="noopener noreferrer">mini-css-extract-plugin<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>它将css单独打包成一个文件的插件，它为每个包含css的js文件都创建了一个css文件。它支持css和sourceMaps的按需加载。目前只有在webpack v4版本才支持使用的该插件</p> <p>引入插件 mini-css-extract-plugin</p> <p><code>npm i mini-css-extract-plugin -D</code></p> <p>在webpack.config.js配置:</p> <p><code>const MiniCssExtractPlugin=require(&quot;mini-css-extract-plugin&quot;);</code></p> <p>在plugins里面写入，要在生成html之前，不然不会生效:</p> <div class="language- extra-class"><pre class="language-text"><code>plugins: [
+ 
+	new MiniCssExtractPlugin({
+		filename: 'css/index.css' //文件目录会放入output.path里
+	}),
+],
+
+</code></pre></div><p>修改之前的module:</p> <div class="language- extra-class"><pre class="language-text"><code>module: {
+	rules: [{
+		test: /\.css$/,
+		use: [MiniCssExtractPlugin.loader, &quot;css-loader&quot;] //代替style-loader
+	}]
+},
+</code></pre></div><p>完整的代码：</p> <div class="language- extra-class"><pre class="language-text"><code>const path = require('path'); //nodejs的语法，引入路径模块，为了输出的时候找绝对路径
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require(&quot;mini-css-extract-plugin&quot;);
+const webpack=require('webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin'); //引入清除文件插件
+module.exports = {
+	// entry: ['./js/index.js', './js/two.js', ],
+	entry: {
+		one: './js/index.js',
+		two: ['./js/two.js', ],
+	}, //入口文件为main.js  
+	output: { //输出
+		path: path.resolve(__dirname, 'dist'), //path.resolve为nodejs的固定语法，用于找到当前文件的绝对路径
+		// filename: 'bundle.js' ,//输出的文件名
+		filename: '[name].bundle.js' //可以以name/id/hash放在中括号里区分文件名
+	},
+	devServer:{//开发服务器的配置
+        open:true,//自动打开
+        port:3000,//端口
+        progress:true,
+        contentBase:path.join(__dirname, &quot;dist&quot;),//指向资源函数，默认是指向配置dist文件
+        compress:true,
+        headers:{
+            'token':'231'
+        },//请求头
+        historyApiFallback:true,
+        ////devServer默认行为是在发行源代码被更新后通过自动刷新整个页面来做到实时预览的，
+        //开启模块热替换功能后,它是通过在不刷新整个页面的情况下通过使用新模块替换旧模块来做到实时预览的 
+        //在package.json 配置 --hot 或者引入webpack的HotModuleReplacementPlugin热更新
+		//使用后module里面的MiniCssExtractPlugin.loader改成&quot;style-loader&quot;,仅限开发环境用
+        //hot:true,
+		//即便HMR没有生效，浏览器也不会自动刷新
+        //hotOnly: true
+    },
+	plugins: [
+		new CleanWebpackPlugin(), //位置放在最上面，作用是先删除dist目录再创建新的dist目录。参数在npm官网上有 默认会去清除output.path里的路径，webpack的output.path目录中的所有文件将被删除一次，但是目录本身不会被删除
+		new MiniCssExtractPlugin({
+			filename: 'css/index.css' //文件目录会放入output.path里
+		}),
+		new HtmlWebpackPlugin({
+			title: '贪吃的猫',
+			/*这个值对应html里的title值 配置该项，它并不会替换指定模板文件中的title元素的内容，除非html模板文件中使用了模板引擎语法来获取该配置项值， &lt;title&gt;&lt;%= htmlWebpackPlugin.options.title %&gt;&lt;/title&gt;*/
+			template: path.join(__dirname, 'default_index.ejs'), //模板文件地址。可以自定义模板
+			filename: 'index.html', //文件名，默认为index.html（路径相对于output.path的值）   还可以为输出文件指定目录位置（例如'html/index.html'）
+			hash: false, //true|false，是否为所有注入的静态资源添加webpack每次编译产生的唯一hash值，添加hash形式如下所示：html &lt;script type=&quot;text/javascript&quot; src=&quot;common.js?a3e1396b501cdd9041be&quot;&gt;&lt;/script&gt;
+			/* 
+			 允许插入到模板中的一些chunk，不配置此项默认会将entry中所有的thunk注入到模板中。在配置多个页面时，每个页面注入的thunk应该是不相同的，需要通过该配置为不同页面注入不同的thunk；
+			 chunks: 'all', 所有的都引入
+			 chunks: ['one'],  引入对应的JS 如果有多个相同的  可以通过 entry的 key : array 引入 如 
+			 entry: {
+			 	one: './js/index.js',
+			 	two: ['./js/index.js', './js/two.js', ],
+			 },
+			 */
+			chunks: 'all',
+			excludeChunks: [], //这个与chunks配置项正好相反，用来配置不允许注入的thunk。 			
+			xhtml: false, //true|fasle, 默认false；是否渲染link为自闭合的标签，true则为自闭合标签
+			inject: true, //向template或者templateContent中注入所有静态资源，不同的配置值注入的位置不经相同 1、true或者body：所有JavaScript资源插入到body元素的底部 2、head: 所有JavaScript资源插入到head元素中 3、false： 所有静态资源css和JavaScript都不会注入到模板文件中
+			minify: { //html-webpack-plugin内部集成了html-minifier
+				collapseWhitespace: true, //压缩空格
+				removeAttributeQuotes: true, //移除引号
+				removeComments: true, //移除注释
+			},
+		}),
+		//new webpack.HotModuleReplacementPlugin(),    //引入热更新插件
+	],
+	module: {
+		rules: [{
+			test: /\.css$/,
+			use: [MiniCssExtractPlugin.loader, &quot;css-loader&quot;] //代替style-loader
+		}]
+	},
+}
+</code></pre></div><p>执行一下 npm run build会发现在dist会生成一个新的css文件，而我们的HMLT也增加了新的LINK标签</p> <p>更多配置 <a href="https://github.com/webpack-contrib/mini-css-extract-plugin" target="_blank" rel="noopener noreferrer">https://github.com/webpack-contrib/mini-css-extract-plugin<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> 去GitHub上查看</p> <h2 id="图片的处理"><a href="#图片的处理" class="header-anchor">#</a> 图片的处理</h2> <p>上面处理CSS用到了插件，所以处理图片我们也要用到插件 这次我们用的是:</p> <div class="language- extra-class"><pre class="language-text"><code>file-loader   //解析地址
+url-loader    //把图片地址解析成base64
+</code></pre></div><p>引入插件:</p> <p><code>npm i file-loader url-loader -D</code></p> <p>在webpack.config.js的module配置规则编译</p> <div class="language- extra-class"><pre class="language-text"><code>module: {
+	rules: [
+		{
+			test: /\.(jpg|png|gif)$/, // 在jpg,png,gif找其中  也可以添加多个
+			use: {
+				&quot;loader&quot; : 'file-loader',
+				options : {
+					outputPath : 'img/', //会在dist文件生成对应的图片文件夹
+				}
+			}
+		},
+	]
+},
+
+</code></pre></div><p>完整的配置:</p> <div class="language- extra-class"><pre class="language-text"><code>const path = require('path'); //nodejs的语法，引入路径模块，为了输出的时候找绝对路径
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require(&quot;mini-css-extract-plugin&quot;);
+const webpack=require('webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin'); //引入清除文件插件
+module.exports = {
+	// entry: ['./js/index.js', './js/two.js', ],
+	entry: {
+		one: './js/index.js',
+		two: ['./js/two.js', ],
+	}, //入口文件为main.js  
+	output: { //输出
+		path: path.resolve(__dirname, 'dist'), //path.resolve为nodejs的固定语法，用于找到当前文件的绝对路径
+		// filename: 'bundle.js' ,//输出的文件名
+		filename: '[name].bundle.js' //可以以name/id/hash放在中括号里区分文件名
+	},
+	devServer:{//开发服务器的配置
+        open:true,//自动打开
+        port:3000,//端口
+        progress:true,
+        contentBase:path.join(__dirname, &quot;dist&quot;),//指向资源函数，默认是指向配置dist文件
+        compress:true,
+        headers:{
+            'token':'231'
+        },//请求头
+        historyApiFallback:true,
+        ////devServer默认行为是在发行源代码被更新后通过自动刷新整个页面来做到实时预览的，
+        //开启模块热替换功能后,它是通过在不刷新整个页面的情况下通过使用新模块替换旧模块来做到实时预览的 
+        //在package.json 配置 --hot 或者引入webpack的HotModuleReplacementPlugin热更新
+		//使用后module里面的MiniCssExtractPlugin.loader改成&quot;style-loader&quot;,仅限开发环境用
+        //hot:true,
+		//即便HMR没有生效，浏览器也不会自动刷新
+        //hotOnly: true
+    },
+	plugins: [
+		new CleanWebpackPlugin(), //位置放在最上面，作用是先删除dist目录再创建新的dist目录。参数在npm官网上有 默认会去清除output.path里的路径，webpack的output.path目录中的所有文件将被删除一次，但是目录本身不会被删除
+		new MiniCssExtractPlugin({
+			filename: 'css/index.css' //文件目录会放入output.path里
+		}),
+		new HtmlWebpackPlugin({
+			title: '贪吃的猫',
+			/*这个值对应html里的title值 配置该项，它并不会替换指定模板文件中的title元素的内容，除非html模板文件中使用了模板引擎语法来获取该配置项值， &lt;title&gt;&lt;%= htmlWebpackPlugin.options.title %&gt;&lt;/title&gt;*/
+			template: path.join(__dirname, 'default_index.ejs'), //模板文件地址。可以自定义模板
+			filename: 'index.html', //文件名，默认为index.html（路径相对于output.path的值）   还可以为输出文件指定目录位置（例如'html/index.html'）
+			hash: false, //true|false，是否为所有注入的静态资源添加webpack每次编译产生的唯一hash值，添加hash形式如下所示：html &lt;script type=&quot;text/javascript&quot; src=&quot;common.js?a3e1396b501cdd9041be&quot;&gt;&lt;/script&gt;
+			/* 
+			 允许插入到模板中的一些chunk，不配置此项默认会将entry中所有的thunk注入到模板中。在配置多个页面时，每个页面注入的thunk应该是不相同的，需要通过该配置为不同页面注入不同的thunk；
+			 chunks: 'all', 所有的都引入
+			 chunks: ['one'],  引入对应的JS 如果有多个相同的  可以通过 entry的 key : array 引入 如 
+			 entry: {
+			 	one: './js/index.js',
+			 	two: ['./js/index.js', './js/two.js', ],
+			 },
+			 */
+			chunks: 'all',
+			excludeChunks: [], //这个与chunks配置项正好相反，用来配置不允许注入的thunk。 			
+			xhtml: false, //true|fasle, 默认false；是否渲染link为自闭合的标签，true则为自闭合标签
+			inject: true, //向template或者templateContent中注入所有静态资源，不同的配置值注入的位置不经相同 1、true或者body：所有JavaScript资源插入到body元素的底部 2、head: 所有JavaScript资源插入到head元素中 3、false： 所有静态资源css和JavaScript都不会注入到模板文件中
+			minify: { //html-webpack-plugin内部集成了html-minifier
+				collapseWhitespace: true, //压缩空格
+				removeAttributeQuotes: true, //移除引号
+				removeComments: true, //移除注释
+			},
+		}),
+		//new webpack.HotModuleReplacementPlugin(),    //引入热更新插件
+	],
+	module: {
+		rules: [
+			{
+				test: /\.css$/,
+				use: [MiniCssExtractPlugin.loader, &quot;css-loader&quot;] //代替style-loader
+			},
+			{
+				test: /\.(jpg|png|gif)$/, // 在jpg,png,gif找其中  也可以添加多个
+				use: {
+					&quot;loader&quot; : 'file-loader',
+					options : {
+						outputPath : 'img/', //会在dist文件生成对应的图片文件夹
+					}
+				}
+			},
+		]
+	},
+}
+</code></pre></div><p>我们执行一下npm run build 会看见在dist文件夹生成一个 img的文件夹  里面放着对应的图片</p> <p><img src="/webpacks/1602517128635.jpg" alt=""></p> <p>一些相关的配置，更多配置去webpack官网插件查看 <a href="https://www.webpackjs.com/loaders/file-loader/" target="_blank" rel="noopener noreferrer">file-loader<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p><img src="/webpacks/1602517216166.jpg" alt=""></p> <p>用了file-loader，我们还有一个url-loader，这个的话 就可以把对于的图片转换成base64图片，因为在前几步我们已经引入了。所以这里我们直接引用</p> <div class="language- extra-class"><pre class="language-text"><code>module: {
+	rules: [
+	
+		/* 转换图片的 
+		url-loader */
+		{
+			test: /\.(jpg|png|gif)$/,
+			//use:['file-loader']
+			use: [{
+				loader: 'url-loader', //把图片转成base64
+				options: {
+					limit: 50 * 1024, //小于50k就会转成base64
+					outputPath: 'img'
+				}
+			}]
+		}
+	]
+},
+
+</code></pre></div><p>我们在执行一下 npm run build 会发现引入的图片已经变成base64编码的图片了。</p> <p><img src="/webpacks/1602517357096.jpg" alt=""></p> <p>这里用了url-loader，并没有用file-loader，说明url-loader里已经包含了file-loader的功能</p> <p>一些相关的配置，更多配置去webpack官网插件查看 <a href="https://www.webpackjs.com/loaders/url-loader/" target="_blank" rel="noopener noreferrer">url-loader<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">更新时间:</span> <span class="time">8/25/2021, 3:56:53 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note/webpacks/webpack从入门到精通三.html" class="prev">
+        webpack从入门到精通(三)
+      </a></span> <span class="next"><a href="/note/webpacks/webpack从入门到精通四.html">
+        webpack从入门到精通(四)
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><div id="live2d-widget" class="live2d-widget-container" style="position:fixed;right:65px;bottom:0px;width:135px;height:300px;z-index:99999;opacity:0.8;pointer-events:none;"><canvas id="live2d_canvas" width="135" height="300" class="live2d_canvas" style="position:absolute;left:0px;top:0px;width:135px;height:300px;"></canvas></div></div></div>
+    <script src="/assets/js/app.635c9f5f.js" defer></script><script src="/assets/js/2.8fa949b0.js" defer></script><script src="/assets/js/96.986bbd5b.js" defer></script>
+  </body>
+</html>
