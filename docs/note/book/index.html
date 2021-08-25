@@ -1,0 +1,308 @@
+<!--
+ * @message: 描述
+ * @Author: Roy
+ * @Email: @163.com
+ * @Github: @163.com
+ * @Date: 2020-08-10 22:55:05
+ * @LastEditors: Roy
+ * @LastEditTime: 2020-08-21 23:45:47
+ * @Deprecated: 否
+ * @FilePath: /my_blog/docs/note/book/index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" context="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://d3js.org/d3-hierarchy.v1.min.js"></script>
+    <!-- <script>
+        //定义assert()方法
+        function assert(value,desc){
+            var li = document.createElement("li");
+            li.className = value?"pass":"fail";
+            li.appendChild(document.createTextNode(desc));
+            document.getElementById("results").appendChild(li);
+        }
+        window.onload = function(){
+            //测试断言执行执行测试
+            assert(true,"The test suite is running");
+            assert(false,"Fail!");
+        }
+    </script> -->
+   <!-- <script>
+       var store = {
+           nextId:1,//持续跟踪要赋值的nextId
+           cache:{},//创建一个对象作为缓存，用于存储函数
+           add:function(fn){//向缓存中添加函数，但只有缓存不存在的情况下才能添加成功
+            if(!fn.id){
+                fn.id = store.nextId++;
+                return !!(store.cache[fn.id]=fn);
+            }
+           }
+           
+       };
+       function ninja(){}
+       //车是是否按预期进行
+       assert(store.add(ninja),"Function was safely added.");
+
+       assert(!store.add(ninja),"But it was only added once.");
+
+   </script> -->
+   
+    <style>
+        /* 定义结果样式 */
+        #results li.pass{color: green;}
+        #results li.fail{color: red;}
+        .bargraph { display: grid; width: 150px; height: 100px; padding: 10px; transform: scaleY(3); grid-template-columns: repeat(5, 20%);}.bargraph div { margin: 0 2px;}.bargraph div:nth-child(1) { background: linear-gradient(to bottom, transparent 75%, #37c 0, #37c 85%, #3c7 0);}.bargraph div:nth-child(2) { background: linear-gradient(to bottom, transparent 74%, #37c 0, #37c 89%, #3c7 0);}.bargraph div:nth-child(3) { background: linear-gradient(to bottom, transparent 60%, #37c 0, #37c 83%, #3c7 0);}.bargraph div:nth-child(4) { background: linear-gradient(to bottom, transparent 55%, #37c 0, #37c 75%, #3c7 0);}.bargraph div:nth-child(5) { background: linear-gradient(to bottom, transparent 32%, #37c 0, #37c 63%, #3c7 0);}
+        .piegraph { display: inline-block; width: 250px; height: 250px; border-radius: 50%; background-image: conic-gradient(#37c 30deg, #3c7 30deg, #3c7 65deg, orange 65deg, orange 110deg, #f73 110deg, #f73 200deg, #ccc 200deg);}
+        .rhombus{
+            width:250px;
+            height:250px;
+            border:1px solid #000;
+            background-size: 50px 50px;
+            background-image:repeating-conic-gradient(red 0 30deg, yellow 30deg 60deg, blue 60deg 90deg)
+        }
+        .rhombus1{
+            width:250px;
+            height:250px;
+            border:1px solid #000;
+            background-image:conic-gradient(#000 45deg, #fff 45deg 135deg, #000 135deg 225deg, #fff 0  315deg, #000 315deg );
+            background-size: 50px 50px;
+        }
+
+        .bg {
+            position: relative;
+            margin: 50px auto;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: conic-gradient( #fc5d2c  45deg,#fba73e 89deg, #fff 89deg 90deg, #fba73e 90deg, #e0fa4e 134deg, #fff 134deg 135deg, #12dd7e 179deg, #fff 179deg 180deg, #12dd7e 180deg, #0a6e3f 224deg, #fff 224deg);
+            transform: rotate(-112.5deg);
+            transform-origin: 50% 50%;
+        }
+        .bg::before{
+            context:"";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            background:#fff;
+            width: 370px;
+            height: 370px;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .bg::after {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            context: "";
+            border-radius: 50%;
+            width: 320px;
+            height: 320px;
+            transform: translate(-50%, -50%);
+            background:radial-gradient(#fff 0%, #fff 25%, transparent 25%, transparent 100%), conic-gradient( #fc5d2c  45deg,#fba73e 45deg 90deg, #e0fa4e 90deg 135deg,  #12dd7e 135deg 180deg,#0a6e3f 180deg 225deg, #fff 225deg);
+        }
+        .canvas1{
+            width:250px;
+            height: 250px;
+            border: 1px solid #000;
+        }
+        /* #canvas2{
+            width:600px;
+            height: 600px;
+            border: 1px solid #000;
+        } */
+        .svg-bg{
+            position: relative;
+            
+        }
+        #title{
+            position: absolute;
+            width: 1000px;
+            text-align: center;    
+        }
+    </style>
+
+</head>
+<body>
+    <!-- 测试结果显示 -->
+    <ul id="results"></ul>
+    <div class="bargraph">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div  class="piegraph"></div>
+    <div  class="rhombus"></div>
+    <div  class="rhombus1"></div>
+    <div class="bg">
+        <div class="point"></div>
+    </div>
+    <div>
+        <canvas class="canvas1" width="500" height="500"></canvas>
+    </div>
+    <div>
+        <canvas id="canvas2" width="1000" height="1000"></canvas>
+    </div>
+
+    <!-- <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <circle cx="100" cy="50" r="40" stroke="black"
+        stroke-width="2" fill="orange" />
+    </svg> -->
+    <!-- d的值
+    可以用','或' '来分割,多个点会默认连接首尾填充颜色
+    M:起始坐标点 M坐标点1x 坐标点1y
+    L:后续坐标点 L坐标点2x 坐标点2y L坐标点3x 坐标点3y ... 
+    H:水平绘制 在上一个坐标点的x坐标和该x坐标连线 H接x坐标(正负与坐标轴方向相同) 若已经用V了,按v后的图案末尾点再水平绘制
+    V:垂直绘制 在上一个坐标点的y坐标和该y坐标连线  v接y坐标(正负与坐标轴方向相同) 若已经用H了,按H后的图案末尾点再垂直绘制
+    Z:线段闭合 放置位置之前的坐标点会首尾闭合
+    C
+    S
+    Q
+    T
+    A:画弧线 水平方向半径 竖直方向半径 角度 0小弧/1大弧 0逆时针/1顺时针 终点x坐标 终点y坐标
+        其中:
+            半径，两个半径相同为圆弧且越小得到的圆弧越多,不同为椭圆弧
+            角度为将图形旋转,圆旋转不变,椭圆旋转会改变，方向为起始坐标和终点坐标的连续,正顺负逆
+
+        绘制扇形:
+            外圈起点坐标和终点坐标y相同
+            内圈起点坐标和y相同,且x，y坐标为中心坐标和外圈坐标的和的一半,若为等距圆，中间通过直线命令连接
+
+小写(相对坐标即之前图案末尾点的距离)
+    m:在之前图案末尾点为坐标原点后的坐标点
+    l:在之前图案末尾点为坐标原点后的坐标点
+    h:水平相对长度 在之前图案末尾点的水平方向长度 正负与坐标轴相同
+    v:垂直相对长度 在之前图案末尾点的垂直方向长度 正负与坐标轴相同 -->
+    <svg width="400" height="400" version="1.1"
+    xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 0 A200 200 180 1 0 400 0 L400 400 L0 400 L0 0" 
+        fill="blue" stroke='blue'  stroke-width="2"></path>
+
+    </svg>
+
+    <div class="svg-bg">
+        <h1 id="title"></h1>
+        <svg id="svg1" width="1000" height="1000">
+        </svg>
+    </div>
+
+    <script>
+        const canvas = document.querySelector("canvas");
+        const context = canvas.getContext("2d");
+        const rectSize = [100, 100];
+        context.fillStyle='red';//填充颜色
+        context.save();//暂存
+        //平移
+        context.translate(-0.5*rectSize[0],-0.5*rectSize[1]);
+        //开始绘制
+        context.beginPath();
+        //绘制路线
+        context.rect(0.5*canvas.width,0.5*canvas.height,...rectSize);
+        //填充
+        context.fill();
+        context.restore();
+        // context.translate(0.5 * rectSize[0], 0.5 * rectSize[1]);
+
+    </script>
+    <script>
+
+        const TAU = 2*Math.PI;
+        window.onload = function () {
+            const dataSource = 'https://s5.ssl.qhres.com/static/b0695e2dd30daa64.json';
+            (async function () { 
+                const data = await (await fetch(dataSource)).json();
+                const regions = d3.hierarchy(data) .sum(d => 1) .sort((a, b) => b.value - a.value); 
+                const pack = d3.pack() .size([1000, 1000]) .padding(3); 
+                const root = pack(regions);
+                
+                const canvas = document.getElementById("canvas2");
+                const context = canvas.getContext("2d");
+                draw(context,root);
+
+                const svgs = document.getElementById("svg1");
+
+                let activeTarget = null;
+                const titleEl = document.getElementById('title');
+                svgs.addEventListener('mousemove', (evt) => {
+                    let target = evt.target;
+                    if(target.nodeName === 'text') target = target.parentNode;
+                    if(activeTarget !== target) {
+                        if(activeTarget) activeTarget.setAttribute('fill', 'rgba(0, 0, 0, 0.2)');
+                    }
+                    target.setAttribute('fill', 'rgba(0, 128, 0, 0.1)');
+                    titleEl.textContent = getTitle(target);
+                    activeTarget = target;
+                });
+
+                svgDraw(svgs,root);
+
+            }());
+        }
+        function draw(ctx,node){//上下文 节点
+            const children = node.children;
+            const {x,y,r} = node;//结构出x,y,r
+            ctx.fillStyle = 'rgba(0,0,0,0.2)';
+            ctx.beginPath();
+            ctx.arc(x,y,r,0,TAU);
+            ctx.fill();
+            if(children){//存在就递归调用
+                for(let i=0;i<children.length;i++){
+                    draw(ctx,children[i]);
+                }
+            }else{
+                //绘制文字
+                const name = node.data.name;
+                ctx.fillStyle = "white";
+                ctx.font = "1.5rem Arial";
+                ctx.textAlign = "center";
+                ctx.fillText(name,x,y);
+            }
+        }
+        
+        function svgDraw(parent,node){
+            const children = node.children;
+            const {x,y,r} = node;//结构出x,y,r
+            const circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+            circle.setAttribute('cx', x); 
+            circle.setAttribute('cy', y); 
+            circle.setAttribute('r', r); 
+            circle.setAttribute('fill', 'rgba(0,0,0,0.2)'); 
+            circle.setAttribute('data-name', node.data.name);
+            parent.appendChild(circle);
+            if (children) {
+                const group = document.createElementNS('http://www.w3.org/2000/svg','g');
+                for(let i=0;i<children.length;i++){
+                    svgDraw(group,children[i]);
+                }
+                group.setAttribute('data-name', node.data.name);
+                parent.appendChild(group);
+            }else{
+                const text = document.createElementNS('http://www.w3.org/2000/svg', 'text'); 
+                text.setAttribute('fill', 'white'); 
+                text.setAttribute('font-family', 'Arial'); 
+                text.setAttribute('font-size', '1.5rem'); 
+                text.setAttribute('text-anchor', 'middle'); 
+                text.setAttribute('x', x); 
+                text.setAttribute('y', y); 
+                const name = node.data.name; 
+                text.textContent = name; 
+                parent.appendChild(text);
+            }
+        }
+        function getTitle(target) { 
+            const name = target.getAttribute('data-name'); 
+            if(target.parentNode && target.parentNode.nodeName === 'g') { 
+                const parentName = target.parentNode.getAttribute('data-name'); 
+                return `${parentName}-${name}`; 
+            } 
+            return name; 
+        }
+    </script>
+
+</body>
+</html>

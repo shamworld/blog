@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>前端基础题 | 码农机器人</title>
+    <meta name="generator" content="VuePress 1.5.3">
+    <link rel="icon" href="/logo.jpg">
+    <meta name="description" content="努力向前">
+    <link rel="preload" href="/assets/css/0.styles.36f06804.css" as="style"><link rel="preload" href="/assets/js/app.ff252b3a.js" as="script"><link rel="preload" href="/assets/js/2.8fa949b0.js" as="script"><link rel="preload" href="/assets/js/28.9b5dccf2.js" as="script"><link rel="prefetch" href="/assets/js/10.cb736b23.js"><link rel="prefetch" href="/assets/js/100.23a201c5.js"><link rel="prefetch" href="/assets/js/101.4f1a3ec8.js"><link rel="prefetch" href="/assets/js/102.027d8bd6.js"><link rel="prefetch" href="/assets/js/103.bcf65284.js"><link rel="prefetch" href="/assets/js/104.568503e2.js"><link rel="prefetch" href="/assets/js/105.38ad24c1.js"><link rel="prefetch" href="/assets/js/11.072d810f.js"><link rel="prefetch" href="/assets/js/12.9c404401.js"><link rel="prefetch" href="/assets/js/13.ccf4c04b.js"><link rel="prefetch" href="/assets/js/14.0be008bc.js"><link rel="prefetch" href="/assets/js/15.362b19b4.js"><link rel="prefetch" href="/assets/js/16.97504e73.js"><link rel="prefetch" href="/assets/js/17.e39c3a51.js"><link rel="prefetch" href="/assets/js/18.162e03d1.js"><link rel="prefetch" href="/assets/js/19.3e0b8b05.js"><link rel="prefetch" href="/assets/js/20.1374fd4d.js"><link rel="prefetch" href="/assets/js/21.30b35824.js"><link rel="prefetch" href="/assets/js/22.d6bda881.js"><link rel="prefetch" href="/assets/js/23.5fff4079.js"><link rel="prefetch" href="/assets/js/24.9d666797.js"><link rel="prefetch" href="/assets/js/25.d8663aec.js"><link rel="prefetch" href="/assets/js/26.638591ac.js"><link rel="prefetch" href="/assets/js/27.522fbfac.js"><link rel="prefetch" href="/assets/js/29.c6511ca2.js"><link rel="prefetch" href="/assets/js/3.6421eb0c.js"><link rel="prefetch" href="/assets/js/30.15bab7f6.js"><link rel="prefetch" href="/assets/js/31.6f288392.js"><link rel="prefetch" href="/assets/js/32.b14c9537.js"><link rel="prefetch" href="/assets/js/33.4f71bac1.js"><link rel="prefetch" href="/assets/js/34.58ac12e2.js"><link rel="prefetch" href="/assets/js/35.2dcfd4cc.js"><link rel="prefetch" href="/assets/js/36.802016a5.js"><link rel="prefetch" href="/assets/js/37.3616686d.js"><link rel="prefetch" href="/assets/js/38.6be03228.js"><link rel="prefetch" href="/assets/js/39.fa43c5e4.js"><link rel="prefetch" href="/assets/js/4.6f69a0ec.js"><link rel="prefetch" href="/assets/js/40.ccb08257.js"><link rel="prefetch" href="/assets/js/41.170e58d5.js"><link rel="prefetch" href="/assets/js/42.c55d7e12.js"><link rel="prefetch" href="/assets/js/43.aa53fa78.js"><link rel="prefetch" href="/assets/js/44.ad0c44ba.js"><link rel="prefetch" href="/assets/js/45.c23a1cec.js"><link rel="prefetch" href="/assets/js/46.c7964a9f.js"><link rel="prefetch" href="/assets/js/47.6b527201.js"><link rel="prefetch" href="/assets/js/48.084a716f.js"><link rel="prefetch" href="/assets/js/49.a2a13465.js"><link rel="prefetch" href="/assets/js/5.29fae726.js"><link rel="prefetch" href="/assets/js/50.f0e74700.js"><link rel="prefetch" href="/assets/js/51.a4bcd1c6.js"><link rel="prefetch" href="/assets/js/52.ae8824f8.js"><link rel="prefetch" href="/assets/js/53.8c4236e2.js"><link rel="prefetch" href="/assets/js/54.10af7bbf.js"><link rel="prefetch" href="/assets/js/55.75138380.js"><link rel="prefetch" href="/assets/js/56.0e73a009.js"><link rel="prefetch" href="/assets/js/57.7a4297bd.js"><link rel="prefetch" href="/assets/js/58.f578e8f2.js"><link rel="prefetch" href="/assets/js/59.b3d447a2.js"><link rel="prefetch" href="/assets/js/6.73d76557.js"><link rel="prefetch" href="/assets/js/60.ca2ac055.js"><link rel="prefetch" href="/assets/js/61.60f2c51d.js"><link rel="prefetch" href="/assets/js/62.258c118b.js"><link rel="prefetch" href="/assets/js/63.cf177d9a.js"><link rel="prefetch" href="/assets/js/64.d4557f40.js"><link rel="prefetch" href="/assets/js/65.47748ed8.js"><link rel="prefetch" href="/assets/js/66.2f6e1280.js"><link rel="prefetch" href="/assets/js/67.c87827d3.js"><link rel="prefetch" href="/assets/js/68.5e53bc5f.js"><link rel="prefetch" href="/assets/js/69.215a1532.js"><link rel="prefetch" href="/assets/js/7.20ebb3ce.js"><link rel="prefetch" href="/assets/js/70.cec5f1b6.js"><link rel="prefetch" href="/assets/js/71.226d2aa6.js"><link rel="prefetch" href="/assets/js/72.b7642cd8.js"><link rel="prefetch" href="/assets/js/73.c888b8eb.js"><link rel="prefetch" href="/assets/js/74.f63cf2d8.js"><link rel="prefetch" href="/assets/js/75.558b3660.js"><link rel="prefetch" href="/assets/js/76.fd30517d.js"><link rel="prefetch" href="/assets/js/77.aac825ac.js"><link rel="prefetch" href="/assets/js/78.60ba9e2f.js"><link rel="prefetch" href="/assets/js/79.f4892b4d.js"><link rel="prefetch" href="/assets/js/8.3e18062c.js"><link rel="prefetch" href="/assets/js/80.03f97401.js"><link rel="prefetch" href="/assets/js/81.dec537b9.js"><link rel="prefetch" href="/assets/js/82.fe0c7c9b.js"><link rel="prefetch" href="/assets/js/83.a2f8e639.js"><link rel="prefetch" href="/assets/js/84.b7d8d020.js"><link rel="prefetch" href="/assets/js/85.925b0290.js"><link rel="prefetch" href="/assets/js/86.51d804ec.js"><link rel="prefetch" href="/assets/js/87.c1b9962a.js"><link rel="prefetch" href="/assets/js/88.ae404626.js"><link rel="prefetch" href="/assets/js/89.689c2e87.js"><link rel="prefetch" href="/assets/js/9.24e501af.js"><link rel="prefetch" href="/assets/js/90.cc625757.js"><link rel="prefetch" href="/assets/js/91.972e30da.js"><link rel="prefetch" href="/assets/js/92.a1c5d858.js"><link rel="prefetch" href="/assets/js/93.ee8ffc65.js"><link rel="prefetch" href="/assets/js/94.0cb0ac84.js"><link rel="prefetch" href="/assets/js/95.a0c50c19.js"><link rel="prefetch" href="/assets/js/96.6da45ef7.js"><link rel="prefetch" href="/assets/js/97.ede29e66.js"><link rel="prefetch" href="/assets/js/98.04d90134.js"><link rel="prefetch" href="/assets/js/99.cfbf9725.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.36f06804.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.jpg" alt="码农机器人" class="logo"> <span class="site-name can-hide">码农机器人</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note/" class="nav-link router-link-active">
+  博客
+</a></div><div class="nav-item"><a href="/react/" class="nav-link">
+  react
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note/" class="nav-link router-link-active">
+  博客
+</a></div><div class="nav-item"><a href="/react/" class="nav-link">
+  react
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>建立前端知识体系</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Vue源码分析</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>提效赋能 前端工程化篇</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>全栈赋能 Node篇</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>程序员PLUS篇</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>HTTP</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webpack</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>性能优化</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Flutter</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>习题</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/note/interview/知识点.html" class="sidebar-link">知识点</a></li><li><a href="/note/interview/宝典一.html" class="sidebar-link">宝典(一)</a></li><li><a href="/note/interview/宝典二.html" class="sidebar-link">宝典(二)</a></li><li><a href="/note/interview/前端基础题.html" class="active sidebar-link">前端基础题</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第1题" class="sidebar-link">第1题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第2题" class="sidebar-link">第2题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第3题" class="sidebar-link">第3题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第4题" class="sidebar-link">第4题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第5题" class="sidebar-link">第5题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第6题" class="sidebar-link">第6题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第7题" class="sidebar-link">第7题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第8题" class="sidebar-link">第8题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第9题" class="sidebar-link">第9题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第10题" class="sidebar-link">第10题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第11题" class="sidebar-link">第11题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第12题" class="sidebar-link">第12题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第13题" class="sidebar-link">第13题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第14题" class="sidebar-link">第14题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第15题" class="sidebar-link">第15题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第16题" class="sidebar-link">第16题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第17题" class="sidebar-link">第17题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第18题" class="sidebar-link">第18题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第19题" class="sidebar-link">第19题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第20题" class="sidebar-link">第20题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第21题" class="sidebar-link">第21题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第22题" class="sidebar-link">第22题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第23题" class="sidebar-link">第23题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第24题" class="sidebar-link">第24题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第25题" class="sidebar-link">第25题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第26题" class="sidebar-link">第26题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第27题" class="sidebar-link">第27题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第28题" class="sidebar-link">第28题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第29题" class="sidebar-link">第29题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第30题" class="sidebar-link">第30题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第31题" class="sidebar-link">第31题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第32题" class="sidebar-link">第32题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第33题" class="sidebar-link">第33题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第34题" class="sidebar-link">第34题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第35题" class="sidebar-link">第35题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第36题" class="sidebar-link">第36题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第37题" class="sidebar-link">第37题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第38题" class="sidebar-link">第38题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第39题" class="sidebar-link">第39题</a></li><li class="sidebar-sub-header"><a href="/note/interview/前端基础题.html#第40题" class="sidebar-link">第40题</a></li></ul></li><li><a href="/note/interview/宝典三.html" class="sidebar-link">宝典(三)</a></li><li><a href="/note/interview/宝典四.html" class="sidebar-link">宝典(四)</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>忍者秘籍书</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="前端基础题"><a href="#前端基础题" class="header-anchor">#</a> 前端基础题</h1> <h2 id="第1题"><a href="#第1题" class="header-anchor">#</a> 第1题</h2> <div class="language- extra-class"><pre class="language-text"><code>if(false){
+    var a=1;
+    let b=2;
+}
+console.log(a);
+console.log(b);
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>undefined
+
+ReferenceError: b is not defined
+</code></pre></div><p>var 不会产生块级作用域，let会产生块级作用域。</p> <p>伪代码相当于:</p> <div class="language- extra-class"><pre class="language-text"><code>var a;
+if(false){
+    a = 1;
+    let b = 2;
+}
+console.log(a); 
+console.log(b);
+复制代码
+
+</code></pre></div><h2 id="第2题"><a href="#第2题" class="header-anchor">#</a> 第2题</h2> <div class="language- extra-class"><pre class="language-text"><code>var a = 1;
+if(true){
+    console.log(a);
+    let a = 2;
+}
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>ReferenceError: Cannot access 'a' before initialization
+</code></pre></div><p>let声明不会变量提升，并且会产生暂存死区。在let声明变量之前访问变量会抛出错误。</p> <h2 id="第3题"><a href="#第3题" class="header-anchor">#</a> 第3题</h2> <div class="language- extra-class"><pre class="language-text"><code>var a = {n: 1}
+var b = a
+a.x = a = {n: 2}
+
+console.log(a.n, b.n);
+console.log(a.x, b.x);
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>2 1
+
+undefined {n: 2}
+</code></pre></div><p>解析:</p> <div class="language- extra-class"><pre class="language-text"><code>var b=a,此时a和b指向同一个对象
+.运算符比=远算符高，先计算`a.x`，此时
+b={
+    n:1,
+    x:undefined
+}
+相当于给对象添加了x属性。
+a.x=a={n:2};
+计算完a.x，在计算=，赋值是从右向左，此时a指向一个对象。
+a={
+    n:2
+}
+a.x已经执行过了，此时对象的x属性赋值为a，此时
+对象={
+    n:1,
+    x:{
+        n:2
+    }
+}
+即:
+a={
+    n:2
+}
+
+b={
+    n:1,
+    x:{
+        n:2
+    }
+}
+
+</code></pre></div><h2 id="第4题"><a href="#第4题" class="header-anchor">#</a> 第4题</h2> <div class="language- extra-class"><pre class="language-text"><code>console.log(c);
+var c;
+function c(a) {
+    console.log(a);
+    var a = 3;
+    function a(){
+    }
+}
+c(2);
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>function c(a){
+    console.log(a);
+    var a = 3;
+    function a(){
+    }
+}
+
+function a(){
+}
+</code></pre></div><p>变量提升也有优先级, 函数声明 &gt; arguments &gt; 变量声明</p> <h2 id="第5题"><a href="#第5题" class="header-anchor">#</a> 第5题</h2> <div class="language- extra-class"><pre class="language-text"><code>var c = 1;
+function c(c) {
+    console.log(c);
+    var c = 3;
+}
+console.log(c);
+c(2);
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>1
+
+TypeError: c is not a function
+</code></pre></div><p>由于函数声明会提升,当函数外的console.log(c)执行时,c已经被赋值为1。因此,执行c(2)时会抛出TypeError,因为1不是函数。</p> <h2 id="第6题"><a href="#第6题" class="header-anchor">#</a> 第6题</h2> <div class="language- extra-class"><pre class="language-text"><code>var name = 'erdong';
+(function () {
+    if (typeof name === 'undefined') {
+        var name = 'chen';
+        console.log(name);
+    } else {
+        console.log(name);
+    }
+})();
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>chen
+</code></pre></div><p>自执行函数执行时，会先进行变量提升(这里涉及到执行上下文,一定要搞懂执行上下文)，在自执行函数执行时，伪代码为:</p> <div class="language- extra-class"><pre class="language-text"><code>var name = 'erdong';
+(function () {
+    var name;  // 变量name会提升到当前作用域顶部
+    if (typeof name === 'undefined') {
+        name = 'chen'
+        console.log(name)
+    } else {
+        console.log(name)
+    }
+})();
+</code></pre></div><p>所以会执行if中的console.log(name)</p> <h2 id="第7题"><a href="#第7题" class="header-anchor">#</a> 第7题</h2> <div class="language- extra-class"><pre class="language-text"><code>var a = 10;  
+function test() {  
+    a = 100;  
+    console.log(a);  
+    console.log(this.a);  
+    var a;  
+    console.log(a); 
+}
+test();
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>100
+10
+100
+</code></pre></div><p>test()为函数独立调用,作用域中的this绑定为全局对象window。</p> <p>test函数执行时,var a被提升到了作用域顶部,因此函数作用域中存在一个变量a。所以在函数中访问的a都是局部作用域中的a。</p> <h2 id="第8题"><a href="#第8题" class="header-anchor">#</a> 第8题</h2> <div class="language- extra-class"><pre class="language-text"><code>if (!('a' in window)) {
+    var a = 1;
+}
+console.log(a);
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>undefined
+</code></pre></div><p>由于if后的{}不会产生块级作用域(不包含let,const时),此时的伪代码为:</p> <div class="language- extra-class"><pre class="language-text"><code>var a;
+if (!(a in window)) {
+    a = 1;
+}
+console.log(a);
+</code></pre></div><p>var a相当于window.a。因此!(a in window)转成布尔值为false,不会执行a = 1。所有console.log(a)输出undefined。</p> <h2 id="第9题"><a href="#第9题" class="header-anchor">#</a> 第9题</h2> <div class="language- extra-class"><pre class="language-text"><code>var a = 1;
+
+function c(a, b) {
+    console.log(a);
+    a = 2;
+    console.log(a);
+}
+c();
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>undefined 
+
+2
+</code></pre></div><h2 id="第10题"><a href="#第10题" class="header-anchor">#</a> 第10题</h2> <div class="language- extra-class"><pre class="language-text"><code>var val=1;
+var obj={
+    val:2,
+    del:function(){
+        console.log(this);                    
+        this.val*=2;
+        console.log(val);
+    }
+}
+
+obj.del();
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>obj(指向的值)
+
+1
+</code></pre></div><p>当通过obj.del()调用del函数时,del函数作用域中的this绑定为obj。</p> <p>在函数作用域中访问val时,由于函数中并没有变量val,因此实际上访问的是全局作用域中的val,即 1。</p> <p>这里考察的是this的指向,一定要熟练掌握。</p> <h2 id="第11题"><a href="#第11题" class="header-anchor">#</a> 第11题</h2> <div class="language- extra-class"><pre class="language-text"><code>var name = &quot;erdong&quot;;
+var object = {
+    name: &quot;chen&quot;,
+    getNameFunc: function () {
+        return function () {
+            return this.name;
+        }
+    }
+}
+console.log(object.getNameFunc()());
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>erdong
+</code></pre></div><p>object.getNameFunc()()先执行object.getNameFunc()返回一个函数:</p> <div class="language- extra-class"><pre class="language-text"><code>function(){
+    return this.name;
+}
+</code></pre></div><p>返回的函数在执行，相当于</p> <div class="language- extra-class"><pre class="language-text"><code>(function(){
+    return this.name;
+})();
+</code></pre></div><p>此时的this绑定的window。因此输出全局变量name的值erdong。</p> <h2 id="第12题"><a href="#第12题" class="header-anchor">#</a> 第12题</h2> <div class="language- extra-class"><pre class="language-text"><code>var name = &quot;erdong&quot;;
+var object = {
+    name: &quot;chen&quot;,
+    getNameFunc: function () {
+        var that = this;
+        return function () {
+            return that.name;
+        }
+    }
+}
+console.log(object.getNameFunc()());
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>chen
+</code></pre></div><p>object.getNameFunc()执行时，此时getNameFunc中的this绑定为object，因此that=object。object.getNameFunc()返回的函数在执行时，产生闭包，因此返回的函数也能访问到外层作用域中的变量that，因此object.name为obejct.name，即chen。</p> <h2 id="第13题"><a href="#第13题" class="header-anchor">#</a> 第13题</h2> <div class="language- extra-class"><pre class="language-text"><code>(function() {
+  var a = b = 3;
+})();
+console.log(typeof a === 'undefined');
+console.log(typeof b === 'undefined');
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>true
+
+false
+</code></pre></div><p>首先要明白var a=b=3是怎样执行的，伪代码:</p> <div class="language- extra-class"><pre class="language-text"><code>b=3;
+var a=b;
+</code></pre></div><p>因此在自执行函数执行时,b由于未经var等操作符声明,为全局变量。a为函数作用域中的局部变量。因此在外面访问a和b时,其值分别为ReferenceError: a is not defined和3。但是typeof检测未声明的变量不会抛出错误,会返回'undefined'。因此typeof a和typeof b分别返回'undefined'和'number'</p> <h2 id="第14题"><a href="#第14题" class="header-anchor">#</a> 第14题</h2> <div class="language- extra-class"><pre class="language-text"><code>var a = 6;
+setTimeout(function () {
+    a = 666;
+}, 0)
+console.log(a);
+</code></pre></div><p>输出：</p> <div class="language- extra-class"><pre class="language-text"><code>6
+</code></pre></div><p>setTimeout为宏任务。即使设置延迟为0ms，也是等待同步代码执行完才会执行。因此console.log(a)输出6。</p> <h2 id="第15题"><a href="#第15题" class="header-anchor">#</a> 第15题</h2> <div class="language- extra-class"><pre class="language-text"><code>function fn1() {
+    var a = 2;
+    function fn2 () {
+      a++;
+      console.log(a);
+    }
+    return fn2;
+}
+var f = fn1();
+f();
+f();
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>3
+4
+</code></pre></div><p>由于fn1函数执行后返回函数fn2,此时fn2中a访问的是fn1作用域中的变量a，因此第一次a++，之后a为3，第二次之后a为4。</p> <h2 id="第16题"><a href="#第16题" class="header-anchor">#</a> 第16题</h2> <div class="language- extra-class"><pre class="language-text"><code>var a = (function(foo){
+    return typeof foo.bar;
+})({foo:{bar:1}});
+
+console.log(a);
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>undefined
+</code></pre></div><p>实参foo的值为{foo:{bar:1}}，因此typeof foo.bar为undefined。</p> <p>typeof foo.foo.bar 为number。</p> <h2 id="第17题"><a href="#第17题" class="header-anchor">#</a> 第17题</h2> <div class="language- extra-class"><pre class="language-text"><code>function f(){
+    return f;
+}
+console.log(new f() instanceof f);
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>false
+</code></pre></div><p>由于构造函数f的返回值为f。因此new f()的值为f。所以console.log(new f() instanceof f)为console.log(f instanceof f)，即false。</p> <h2 id="第18题"><a href="#第18题" class="header-anchor">#</a> 第18题</h2> <div class="language- extra-class"><pre class="language-text"><code>function A () {
+}
+A.prototype.n = 1;
+
+var b = new A();
+
+A.prototype = {
+    n: 2,
+    m: 3
+}
+var c = new A();
+
+console.log(b.n, b.m);
+console.log(c.n, c.m);
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>1,undefined
+
+2,3
+</code></pre></div><p>var b = new A(); 实例化b时,A的prototype为</p> <div class="language- extra-class"><pre class="language-text"><code>A.prototype = {
+    constructor:A,
+    n:1
+}
+</code></pre></div><p>当访问b.n和b.m时，通过原型链找到A.prototype指向的对象上，即b.n=1,b.m=undefined。</p> <p>var c=new A();实例化c时，A的prototype为</p> <div class="language- extra-class"><pre class="language-text"><code>A.prototype = {
+    n:2,
+    m:3
+}
+</code></pre></div><p>当访问a.n和a.m时，通过原型链找到A.prototype指向的对象上，此时A.prototype重写，因此a.n=2,b.m=3。</p> <h2 id="第19题"><a href="#第19题" class="header-anchor">#</a> 第19题</h2> <div class="language- extra-class"><pre class="language-text"><code>var F = function(){};
+var O = {};
+Object.prototype.a = function(){
+    console.log('a')
+}
+Function.prototype.b = function(){
+    console.log('b')
+}
+var f = new F();
+
+F.a();  
+F.b();  
+O.a();
+O.b();
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>a
+b
+a
+TypeError: O.b is not a function
+</code></pre></div><p>F为函数,它也能访问Object原型上的方法,O为对象,不能访问Function原型上的方法。</p> <p>F的原型链为:</p> <p><code>F =&gt; F.__proto__ =&gt; Function.prototype =&gt; Function.prototype.__proto__ =&gt; Object.prototype</code></p> <p>由于Object.prototype在F的原型链上,所以F能访问Object.prototype上的属性和方法。即: F.a(),F.b()能正常访问。</p> <p>O的原型链为:</p> <p><code>O =&gt; O.__proto__ =&gt; Object.prototype</code></p> <p>由于Function.prototype不在O的原型链上,因此O不能访问Function.prototype上的方法,即O.b()抛出错误。</p> <p>如果你对原型和原型链掌握的好,试着理解下面的示例:</p> <div class="language- extra-class"><pre class="language-text"><code>console.log(Object instanceof Function);
+
+console.log(Function instanceof Object);
+
+console.log(Function instanceof Function);
+
+</code></pre></div><h2 id="第20题"><a href="#第20题" class="header-anchor">#</a> 第20题</h2> <div class="language- extra-class"><pre class="language-text"><code>function Person() {
+    getAge = function () {
+        console.log(10)
+    }
+    return this;
+}
+
+Person.getAge = function () {
+    console.log(20)
+}
+
+Person.prototype.getAge = function () {
+    console.log(30)
+}
+
+var getAge = function () {
+    console.log(40)
+}
+
+function getAge() {
+    console.log(50)
+}
+
+
+Person.getAge();
+getAge();
+Person().getAge();
+new Person.getAge();
+getAge();
+new Person().getAge();
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>20
+40
+10
+20
+10
+30
+</code></pre></div><p>Person.getAge();此时执行的时Person函数上的getAge方法。</p> <div class="language- extra-class"><pre class="language-text"><code>Person.getAge = function () {
+    console.log(20)
+}
+</code></pre></div><p>所以输出:20.</p> <p>getAge();此时执行的是全局中的getAge方法。此时全局getAge方法为:</p> <div class="language- extra-class"><pre class="language-text"><code>function () {
+    console.log(40)
+}
+</code></pre></div><p>所以输出:40。</p> <p>Person().getAge();由于Person()单独执行所以，作用域中的this绑定为window，相当于window.getAge()。同上，执行的都是全局getAge方法，但是Person执行时，内部执行了。</p> <div class="language- extra-class"><pre class="language-text"><code>getAge = function () {
+    console.log(10)
+}
+</code></pre></div><p>因此全局getAge方法现在为:</p> <div class="language- extra-class"><pre class="language-text"><code>function () {
+    console.log(10)
+}
+</code></pre></div><p>所以输出:10。</p> <p>new Person.getAge();此时相当于实例化Person.getAge这个函数,伪代码:</p> <div class="language- extra-class"><pre class="language-text"><code>var b = Person.getAge;
+new b();
+</code></pre></div><p>所以输出:20。</p> <p>getAge();执行全局getAge方法,由于在Person().getAge()执行时把全局getAge方法赋值为:</p> <div class="language- extra-class"><pre class="language-text"><code>function () {
+    console.log(10)
+}
+
+</code></pre></div><p>所以输出:10。</p> <p>new Person().getAge();此时调用的是Person原型上的getAge方法:</p> <div class="language- extra-class"><pre class="language-text"><code>Person.prototype.getAge = function () {
+    console.log(30)
+}
+</code></pre></div><p>所以输出:30。</p> <p>这里要注意:1.变量提升及提升后再赋值。2.调用构造函数时,带()和不带()的区别。</p> <h2 id="第21题"><a href="#第21题" class="header-anchor">#</a> 第21题</h2> <div class="language- extra-class"><pre class="language-text"><code>console.log(false.toString()); 
+console.log([1, 2, 3].toString()); 
+console.log(1.toString()); 
+console.log(5..toString());
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>'false'
+'1,2,3'
+Uncaught SyntaxError: Invalid or unexpected token
+'5'
+</code></pre></div><p>当执行1.toString();时,由于1.也是有效数字,因此此时变成(1.)toString()。没有用.调用toString方法,因此抛出错误。</p> <p>正确的应该是:</p> <div class="language- extra-class"><pre class="language-text"><code>1..toString();
+1 .toString();
+(1).toString();
+</code></pre></div><h2 id="第22题"><a href="#第22题" class="header-anchor">#</a> 第22题</h2> <div class="language- extra-class"><pre class="language-text"><code>console.log(typeof NaN === 'number');
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>true
+</code></pre></div><p>NaN为不是数字的数字。虽然它不是数字,但是它也是数字类型。</p> <h2 id="第23题"><a href="#第23题" class="header-anchor">#</a> 第23题</h2> <div class="language- extra-class"><pre class="language-text"><code>console.log(1 + &quot;2&quot; + &quot;2&quot;);
+
+console.log(1 + +&quot;2&quot; + &quot;2&quot;);
+
+console.log(1 + -&quot;1&quot; + &quot;2&quot;);
+
+console.log(+&quot;1&quot; + &quot;1&quot; + &quot;2&quot;); 
+
+console.log( &quot;A&quot; - &quot;B&quot; + &quot;2&quot;); 
+
+console.log( &quot;A&quot; - &quot;B&quot; + 2); 
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>&quot;122&quot;
+&quot;32&quot;
+&quot;02&quot;
+&quot;112&quot;
+&quot;NAN2&quot;
+NAN
+</code></pre></div><p>首先要明白两点:</p> <ul><li>+a，会把a转换为数字。-a会把a转换成数字的负值(如果能转换为数字的话，否则为NAN)</li> <li>字符串于任何想加都是字符串拼接</li></ul> <p><code>console.log(1 + &quot;2&quot; + &quot;2&quot;);</code>简单的字符串拼接,即结果为:<code>'122'。</code></p> <p><code>console.log(1 + +&quot;2&quot; + &quot;2&quot;);</code>这里相当于 <code>console.log(1 + 2 + &quot;2&quot;);</code>,然后再字符串拼接。即结果为:<code>'32'</code></p> <p><code>console.log(+&quot;1&quot; + &quot;1&quot; + &quot;2&quot;);</code>这里相当于<code>console.log(1 + &quot;1&quot; + &quot;2&quot;);</code>,然后再字符串拼接。即结果为:<code>'112'</code>。
+<code>console.log( &quot;A&quot; - &quot;B&quot; + &quot;2&quot;);</code>,由于<code>'A' - 'B' = NaN</code>,所以相当于<code>console.log( NaN + &quot;2&quot;);</code>, 然后再字符串拼接。即结果为:<code>'NaN2'</code>。
+<code>console.log( &quot;A&quot; - &quot;B&quot; + 2);</code> 同上,相当于<code>console.log(NaN + 2)</code>,由于NaN+任何值还是NaN,即结果为:<code>NaN</code>。</p> <h2 id="第24题"><a href="#第24题" class="header-anchor">#</a> 第24题</h2> <div class="language- extra-class"><pre class="language-text"><code>var a = 666;
+console.log(++a);
+console.log(a++);
+console.log(a);
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>667
+667
+668
+</code></pre></div><p>++a先执行+1操作,再执行取值操作。 此时a的值为667。因此输出667。</p> <p>a++先执行取值操作,再执行+1。 此时输出667,随后a的值变为668。</p> <p>--a和a--同理。</p> <p>使用这类运算符时要注意:</p> <p>1）这里的++、--不能用作于常量。比如</p> <p><code>1++; // 抛出错误</code></p> <p>2）如果a不是数字类型,会首先通过Number(a),将a转换为数字。再执行++等运算。</p> <h2 id="第25题"><a href="#第25题" class="header-anchor">#</a> 第25题</h2> <div class="language- extra-class"><pre class="language-text"><code>console.log(typeof a);
+function a() {}
+var a;
+console.log(typeof a);
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>'function'
+'function'
+</code></pre></div><p>函数会优先于变量声明提前。因此会忽略var a。</p> <h2 id="第26题"><a href="#第26题" class="header-anchor">#</a> 第26题</h2> <div class="language- extra-class"><pre class="language-text"><code>var a;
+var b = 'undefined';
+console.log(typeof a);
+console.log(typeof b);
+console.log(typeof c);
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>'undefined'
+'string'
+'undefined'
+</code></pre></div><p>a为声明未赋值,默认为undefined,b的值为字符串'undefined',c为未定义。</p> <p>typeof一个未定义的变量时,不会抛出错误,会返回'undefined'。注意typeof返回的都是字符串类型。</p> <h2 id="第27题"><a href="#第27题" class="header-anchor">#</a> 第27题</h2> <div class="language- extra-class"><pre class="language-text"><code>var x = 1;
+if(function f(){}){
+    x += typeof f;
+}
+ 
+console.log(x);
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>1undefined
+</code></pre></div><p>function f(){}当做if条件判断,其隐式转换后为true。但是在()中的函数不会声明提升,因此f函数在外部是不存在的。因此typeof f = 'undefined',所以x += typeof f,相当于x = x + 'undefined'为'1undefined'</p> <h2 id="第28题"><a href="#第28题" class="header-anchor">#</a> 第28题</h2> <div class="language- extra-class"><pre class="language-text"><code>var str = &quot;123abc&quot;;
+console.log(typeof str++);
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>'number'
+</code></pre></div><p>使用++运算符时(无论是前置还是后置),如果变量不是数字类型,会首先用Number()转换为数字。因此typeof str++相当于typeof Number(str)++。由于后置的++是先取值后计算,因此相当于typeof Number(&quot;123abc&quot;)。即typeof NaN,所以输出'number'。</p> <h2 id="第29题"><a href="#第29题" class="header-anchor">#</a> 第29题</h2> <div class="language- extra-class"><pre class="language-text"><code>console.log('b' + 'a' + +'a'+'a');
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>'baNANa'
+</code></pre></div><p>'b' + 'a' + +'a'+'a'相当于'ba' + +'a'+'a',+'a'会将'a'转换为数字类型,即+'a' = NaN。所以最终得到'ba' + NaN +'a',通过字符串拼接,结果为:baNaNa</p> <h2 id="第30题"><a href="#第30题" class="header-anchor">#</a> 第30题</h2> <div class="language- extra-class"><pre class="language-text"><code>var obj = {n: 1};
+function fn2(a) {
+    a.n = 2;
+}
+fn2(obj);
+console.log(obj.n);
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>2
+</code></pre></div><p>函数传递参数时,如果是基本类型为值传递,如果是引用类型,为引用地址的值传递。其实都是值传递。因此形参a和obj引用地址相同,都指向同一个对象。当执行a.n,实际上共同指向的对象修改了,添加了个n属性,因此obj.n为2。</p> <h2 id="第31题"><a href="#第31题" class="header-anchor">#</a> 第31题</h2> <div class="language- extra-class"><pre class="language-text"><code>var x = 10;
+function fn() {
+    console.log(x);
+}
+function show(f) {
+    var x = 20;
+    f();
+}
+show(fn);
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>10
+</code></pre></div><p>JavaScript采用的是词法作用域,它规定了函数内访问变量时,查找变量是从函数声明的位置向外层作用域中查找,而不是从调用函数的位置开始向上查找。因此fn函数内部访问的x是全局作用域中的x,而不是show函数作用域中的x。</p> <h2 id="第32题"><a href="#第32题" class="header-anchor">#</a> 第32题</h2> <div class="language- extra-class"><pre class="language-text"><code>Object.prototype.bar = 1; 
+var foo = {
+    goo: undefined
+};
+
+console.log(foo.bar);
+console.log('bar' in foo);
+
+console.log(foo.hasOwnProperty('bar'));
+console.log(foo.hasOwnProperty('goo'));
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>1
+true
+false
+true
+</code></pre></div><p>in操作符:检测指定对象(右边)原型链上是否有对应的属性值。
+hasOwnProperty方法:检测指定对象自身上是否有对应的属性值。两者的区别在于in会查找原型链,而hasOwnProperty不会。
+示例中对象foo自身上存在goo属性,而它的原型链上存在bar属性。
+通过这个例子要注意如果要判断foo上是否有属性goo,不能简单的通过if(foo.goo){}判断,因为goo的值可能为undefined或者其他可能隐式转换为false的值。</p> <h2 id="第33题"><a href="#第33题" class="header-anchor">#</a> 第33题</h2> <div class="language- extra-class"><pre class="language-text"><code>Object.prototype.bar = 1;
+
+var foo = {
+    moo: 2
+};
+for(var i in foo) {
+    console.log(i); 
+}
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>'moo'
+'bar'
+</code></pre></div><p>for...in...遍历对象上除了Symbol以外的可枚举属性,包括原型链上的属性。</p> <h2 id="第34题"><a href="#第34题" class="header-anchor">#</a> 第34题</h2> <div class="language- extra-class"><pre class="language-text"><code>function foo1() {
+    return {
+        bar: &quot;hello&quot;
+    };
+}
+function foo2() {
+    return 
+    {
+        bar: &quot;hello&quot;
+    };
+}
+console.log(foo1());
+console.log(foo2());
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>{ bar: &quot;hello&quot; }
+
+undefined
+</code></pre></div><p>两个函数唯一区别就是return后面跟的值,一个换行一个不换行。</p> <p>当我们书写代码时忘记在结尾书写;时,JavaScript解析器会根据一定规则自动补上;。</p> <div class="language- extra-class"><pre class="language-text"><code>return
+{
+    bar: &quot;hello&quot;
+}
+=&gt; 会被解析成
+return;
+{
+    bar: &quot;hello&quot;
+};
+</code></pre></div><p>因此函数执行后会返回undefined。</p> <h2 id="第35题"><a href="#第35题" class="header-anchor">#</a> 第35题</h2> <div class="language- extra-class"><pre class="language-text"><code>console.log((function(){ return typeof arguments; })());
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>'object'
+</code></pre></div><p>arguments为类数组,类型为object。因此typeof arguments = 'object'。</p> <h2 id="第36题"><a href="#第36题" class="header-anchor">#</a> 第36题</h2> <div class="language- extra-class"><pre class="language-text"><code>console.log(Boolean(false));
+console.log(Boolean('0'));
+console.log(Boolean(''));
+console.log(Boolean(NaN));
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>false
+true
+false
+fasle
+</code></pre></div><p>只有下面几种值在转换为布尔值时为false:</p> <p><code>+0,-0,NaN,false,'',null,undefined。</code></p> <p>除此之外的值在转换为布尔值的时候全部为true。</p> <h2 id="第37题"><a href="#第37题" class="header-anchor">#</a> 第37题</h2> <div class="language- extra-class"><pre class="language-text"><code>console.log(Array(3));
+
+console.log(Array(2,3));
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>[empty × 3] 
+
+[2,3]
+</code></pre></div><p>使用Array()创建数组时,要注意传入的值的类型和数量。</p> <h2 id="第38题"><a href="#第38题" class="header-anchor">#</a> 第38题</h2> <div class="language- extra-class"><pre class="language-text"><code>console.log(0.1 + 0.2 == 0.3);
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>false
+</code></pre></div><h2 id="第39题"><a href="#第39题" class="header-anchor">#</a> 第39题</h2> <div class="language- extra-class"><pre class="language-text"><code>var a=[1, 2, 3];
+console.log(a.join());
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>1,2,3
+</code></pre></div><p>join方法如果省略参数,默认以,分隔。</p> <h2 id="第40题"><a href="#第40题" class="header-anchor">#</a> 第40题</h2> <div class="language- extra-class"><pre class="language-text"><code>var a = [3];
+var b = [1];
+console.log(a - b); 
+</code></pre></div><p>输出:</p> <div class="language- extra-class"><pre class="language-text"><code>2
+</code></pre></div><p>在执行a - b时,a和b都要转换为数字。首先a先转换为字符串,[3] =&gt; [3].toString() =&gt; '3',然后Number(3) =&gt; 3。b同理。因此转换之后为3 - 1 = 2。</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">更新时间:</span> <span class="time">10/21/2020, 3:13:57 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note/interview/宝典二.html" class="prev">
+        宝典(二)
+      </a></span> <span class="next"><a href="/note/interview/宝典三.html">
+        宝典(三)
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><div id="live2d-widget" class="live2d-widget-container" style="position:fixed;right:65px;bottom:0px;width:135px;height:300px;z-index:99999;opacity:0.8;pointer-events:none;"><canvas id="live2d_canvas" width="135" height="300" class="live2d_canvas" style="position:absolute;left:0px;top:0px;width:135px;height:300px;"></canvas></div></div></div>
+    <script src="/assets/js/app.ff252b3a.js" defer></script><script src="/assets/js/2.8fa949b0.js" defer></script><script src="/assets/js/28.9b5dccf2.js" defer></script>
+  </body>
+</html>

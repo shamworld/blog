@@ -1,0 +1,62 @@
+<!--
+ * @message: 描述
+ * @Author: Roy
+ * @Email: @163.com
+ * @Github: @163.com
+ * @Date: 2020-08-10 22:55:05
+ * @LastEditors: Roy
+ * @LastEditTime: 2020-10-08 12:14:24
+ * @Deprecated: 否
+ * @FilePath: /my_blog/docs/note/book/index2.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" context="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://d3js.org/d3-hierarchy.v1.min.js"></script>
+    <script>
+        //定义assert()方法
+        function assert(value,desc){
+            var li = document.createElement("li");
+            li.className = value?"pass":"fail";
+            li.appendChild(document.createTextNode(desc));
+            document.getElementById("results").appendChild(li);
+        }
+        // window.onload = function(){
+        //     //测试断言执行执行测试
+        //     assert(true,"The test suite is running");
+        //     assert(false,"Fail!");
+        // }
+    </script>
+    <style>
+        /* 定义结果样式 */
+        #results li.pass{color: green;}
+        #results li.fail{color: red;text-decoration:line-through}
+    </style>
+
+</head>
+<body>
+    <div id="test"><b>Hello</b>,I'm a ninja!</div>
+    <div id="test2"></div>
+    <div id="results">
+        
+    </div>
+    
+    <script type="text/javascript">
+        window.onload = function(){
+           var divs = document.querySelectorAll("body>div");
+           //查找是body组元素的<div>元素
+           assert(divs.length===2,"Two divs found using a CSS selector.");
+           var b = document.getElementById('test').querySelector("b:only-child");
+           //只查找粗体子元素
+           assert(b,"The bold element was found relative to another element");
+           
+
+        }
+
+    </script>
+
+</body>
+</html>

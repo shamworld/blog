@@ -1,0 +1,60 @@
+<!--
+ * @message: 描述
+ * @Author: Roy
+ * @Email: @163.com
+ * @Github: @163.com
+ * @Date: 2020-08-23 23:14:18
+ * @LastEditors: Roy
+ * @LastEditTime: 2020-08-29 12:05:30
+ * @Deprecated: 否
+ * @FilePath: /my_blog/docs/note/可视化/向量和坐标系.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/roughjs@latest/bundled/rough.js"></script>
+</head>
+<body>
+    <!-- 假设，我们要在宽 512 * 高 256 的一个 Canvas 画布上实现如下的视觉效果。
+    其中，山的高度是 100，底边 200，两座山的中心位置到中线的距离都是 80，
+    太阳的圆心高度是 150 -->
+    <!-- 山的顶点y:156   太阳圆心坐标系(512/2,256-150)  两座山顶点坐标分别是(256-80,156)和(256+80,156) 
+        第一座山的 底部两个点的坐标是(76,256)和(276,256),
+        第二座山的 底部两个点的坐标是(236,256)和(436,256),
+    -->
+    <canvas width="512" height="256" style="border:1px solid #000"></canvas>
+    <!-- <script>
+        const rc = rough.canvas(document.querySelector('canvas'));
+        const hillOps = {roughness:2.8,strokeWidth:2,fill:'blue'};
+        rc.path('M76 256L176 156L276 256',hillOps);
+        rc.path('M236 256L336 156L436 256',hillOps);
+
+        rc.circle(256,106,105,{
+            stroke:'red',
+            strokeWidth:4,
+            fill:'rgba(255,255,0,0.4)', 
+            fillStyle:'solid',
+        });
+
+    </script> -->
+    <script>
+        //坐标变换
+        const rc = rough.canvas(document.querySelector('canvas'));
+        const ctx = rc.ctx;
+        ctx.translate(256, 256);
+        ctx.scale(1, -1);
+        const hillOpts = {roughness: 2.8, strokeWidth: 2, fill: 'blue'};
+        rc.path('M-180 0L-80 100L20 0', hillOpts);
+        rc.path('M-20 0L80 100L180 0', hillOpts);
+        rc.circle(0, 150, 105, {
+             stroke: 'red', 
+             strokeWidth: 4, 
+             fill: 'rgba(255,255, 0, 0.4)', 
+             fillStyle: 'solid',
+        });
+    </script>
+</body>
+</html>

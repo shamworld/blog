@@ -1,0 +1,27 @@
+{
+  "name": "VuePress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "deploy": "bash deploy.sh",
+    "build": "vuepress build docs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "node-bash-title": "0.0.2",
+    "set-iterm2-badge": "0.0.4",
+    "vuepress": "^1.5.3",
+    "webpack-build-notifier": "^2.1.1"
+  },
+  "dependencies": {
+    "chokidar": "^3.5.0",
+    "rsync": "^0.6.1",
+    "shelljs": "^0.8.4",
+    "vuepress-plugin-helper-live2d": "^1.0.2",
+    "yargs": "^16.2.0"
+  }
+}

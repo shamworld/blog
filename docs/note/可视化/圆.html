@@ -1,0 +1,94 @@
+<!--
+ * @message: 描述
+ * @Author: Roy
+ * @Email: @163.com
+ * @Github: @163.com
+ * @Date: 2020-09-04 23:28:21
+ * @LastEditors: Roy
+ * @LastEditTime: 2020-09-05 00:03:12
+ * @Deprecated: 否
+ * @FilePath: /my_blog/docs/note/可视化/圆.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="module" src="./yuan.js"></script>
+</head>
+<body>
+
+    <canvas width="512" height="512" style="border:1px solid #000"></canvas>
+
+<!--     
+    <script>
+        /*
+        圆
+            {
+                x=x0+r*cos(角度)
+                y=y0+r*sin(角度)
+            }
+        */
+        const TAU_SEGMENTS = 60;
+        const TAU = Math.PI * 2;
+        function arc(x0, y0, radius, startAng = 0, endAng = Math.PI * 2) { 
+        const ang = Math.min(TAU, endAng - startAng); 
+        const ret = ang === TAU ? [] : [[x0, y0]]; 
+        const segments = Math.round(TAU_SEGMENTS * ang / TAU); 
+        for(let i = 0; i <= segments; i++) { 
+            const x = x0 + radius * Math.cos(startAng + ang * i / segments); 
+            const y = y0 + radius * Math.sin(startAng + ang * i / segments); 
+            ret.push([x, y]); } return ret;
+        }
+        draw(arc(0, 0, 100));
+    </script>
+    <script>
+        /*
+        椭圆
+            x=x0+a*cos(角度)
+            y=y0+b*sin(角度)
+        */
+
+        const TAU_SEGMENTS = 60;
+        const TAU = Math.PI * 2;
+        function ellipse(x0, y0, radiusX, radiusY, startAng = 0, endAng = Math.PI * 2) {
+        const ang = Math.min(TAU, endAng - startAng);
+        const ret = ang === TAU ? [] : [[x0, y0]];
+        const segments = Math.round(TAU_SEGMENTS * ang / TAU);
+        for(let i = 0; i <= segments; i++) {
+            const x = x0 + radiusX * Math.cos(startAng + ang * i / segments);
+            const y = y0 + radiusY * Math.sin(startAng + ang * i / segments);
+            ret.push([x, y]);
+        }
+        return ret;
+        }
+
+        draw(ellipse(0, 0, 100, 50));
+    </script>
+
+    <script>
+        /*
+            抛物线的参数方程。其中 p 是常数，为焦点到准线的距离
+            x=x0+2pt*t
+            y=y0+2pt
+        */
+
+    const LINE_SEGMENTS = 60;
+    function parabola(x0, y0, p, min, max) {
+    const ret = [];
+    for(let i = 0; i <= LINE_SEGMENTS; i++) {
+        const s = i / 60;
+        const t = min * (1 - s) + max * s;
+        const x = x0 + 2 * p * t ** 2;
+        const y = y0 + 2 * p * t;
+        ret.push([x, y]);
+    }
+    return ret;
+    }
+
+    draw(parabola(0, 0, 5.5, -10, 10));
+    </script> -->
+
+</body>
+</html>

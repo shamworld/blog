@@ -1,0 +1,12 @@
+#!/usr/bin/expect
+
+set from [lindex $argv 0]
+set to [lindex $argv 1]
+set password [lindex $argv 2]
+set timeout 30
+spawn bash -c "scp -r $from $to"
+expect {
+    "*password:" { send "$password\r"}
+    "yes/no":{}
+}
+interact

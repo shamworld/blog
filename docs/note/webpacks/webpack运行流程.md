@@ -1,0 +1,263 @@
+# webpack运行流程
+
+## 1.compiler
+compiler是webpack运行的主入口，complier对象代表了完整的webpack环境配置。这个对象在webpack启动时被一次性建立，并配置好所有的可操作设置，包括options，plugin，loader，当在webpack中使用一个插件时，插件将收到此complier的引用对象，可以使用他来访问webpack的主环境。
+
+## 2.complition
+complition对象代表了一次资源版本构建，当运行webpack开发环境中间件时，每检测到一个文件的变化都会创建一个新的complition，从而生成一组新的编译资源。一个complition对象表现了当前的模块资源，编译生成资源，变化的文件，以及被追踪依赖的状态信息。complition也提供了很多关键步骤的回调，以供插件做自定义时处理使用。
+
+## 3.Chunk
+Chunk用于表示chunk的类，对于构建时需要的chunk对象由complition创建后保存管理(webpack中最核心的负责编译的complier和负责创建bundle的complition都是tapable的实例)
+
+## 4.Module
+用于表示代码模块的基础类，衍生出很多子类用于处理不同的情况，关于代码模块的所有信息都会存在Module实例中，例如dependencies记录代码模块的依赖等，当一个Module实例被创建之后，比较重要的一步执行complition.buildModule这个方法，它会调用modle实例的build方法。runloader执行对应的loaders，将代码源码内容一一交由配置中指定的loader处理后，再把处理的结果保存起来。
+
+## 5.parser
+其中相对复杂的一个部分，基于acorn来分析ast语法树
+
+## 6.dependency
+解析时用于保存代码代码模块对应的依赖使用的对象。Module实例的build方法在执行完对应的loader时，处理完模块代码自身的转换后，继续调用parser的实例来解析自身依赖的模块，解析后的结果存放在module.dependencies中，首先保存的是依赖路径，后续会经由complition.processModuleDependencies方法，再来处理各个依赖模块，递归去建立整个依赖。
+
+## 7.Template
+生成最终代码要使用到的最终模板
+
+## 整体运行流程
+complier ---> complition ---> Chunk ---> Template
+1.创建complier调用complier.run开始构建
+2.创建complition基于配置开始创建Chunk
+3.使用Parser从Chunk解析依赖，使用Module和dependency管理代码模块相互关系
+4.使用Template基于complition的数据生成结果代码
+
+## webpack的构建流程是什么?从读取配置到输出文件这个过程
+- 初始化参数：从配置文件和 Shell 语句中读取与合并参数，得出最终的参数；
+- 开始编译：用上一步得到的参数初始化 Compiler 对象，加载所有配置的插件，执行对象的 run 方法开始执行编译；
+- 确定入口：根据配置中的 entry 找出所有的入口文件；
+- 编译模块：从入口文件出发，调用所有配置的 Loader 对模块进行翻译，再找出该模块依赖的模块，再递归本步骤直到所有入口依赖的文件都经过了本步骤的处理；
+- 完成模块编译：在经过第4步使用 Loader 翻译完所有模块后，得到了每个模块被翻译后的最终内容以及它们之间的依赖关系；
+- 输出资源：根据入口和模块之间的依赖关系，组装成一个个包含多个模块的 Chunk，再把每个 Chunk 转换成一个单独的文件加入到输出列表，这步是可以修改输出内容的最后机会；
+- 输出完成：在确定好输出内容后，根据配置确定输出的路径和文件名，把文件内容写入到文件系统。
+    在以上过程中，Webpack 会在特定的时间点广播出特定的事件，插件在监听到感兴趣的事件后会执行特定的逻辑，并且插件可以调用 Webpack 提供的 API 改变 Webpack 的运行结果。
+
+
+## Loader和Plugin的不同？
+- 不同的作用
+    Loader直译为"加载器"。Webpack将一切文件视为模块，但是webpack原生是只能解析js文件，如果想将其他文件也打包的话，就会用到loader。 所以Loader的作用是让webpack拥有了加载和解析非JavaScript文件的能力。
+    Plugin直译为"插件"。Plugin可以扩展webpack的功能，让webpack具有更多的灵活性。 在 Webpack 运行的生命周期中会广播出许多事件，Plugin 可以监听这些事件，在合适的时机通过 Webpack 提供的 API 改变输出结果。
+- 不同的用法
+    Loader在module.rules中配置，也就是说他作为模块的解析规则而存在。 类型为数组，每一项都是一个Object，里面描述了对于什么类型的文件（test），使用什么加载(loader)和使用的参数（options）
+    Plugin在plugins中单独配置。 类型为数组，每一项是一个plugin的实例，参数都通过构造函数传入。
+
+## 分析打包后的文件
+1.src下创建test.js
+```js
+const test = ()=> {
+    console.log('----test----')
+}
+export default test
+```
+2.index.js下引入
+```js
+import test from './test'
+test()
+```
+2.执行打包后的文件
+```js
+(function (modules) { // webpackBootstrap
+  // The module cache  模块缓存
+  var installedModules = {};
+
+  // The require function require函数
+  function __webpack_require__(moduleId) {
+
+    // Check if module is in cache  检测模块是否被安装过
+    if (installedModules[moduleId]) {
+      // 把模块导出的资源注入到缓存里去
+      return installedModules[moduleId].exports;
+    }
+    // Create a new module (and put it into the cache)  如果没有模块的缓存
+    var module = installedModules[moduleId] = {
+      i: moduleId, // 模块的名字
+      l: false, // 
+      exports: {} // 模块导出的值
+    };
+
+    // 核心的模块
+    // Execute the module function 执行这个模块的函数
+    modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+    // 执行这一段代码
+    // (function (module, __webpack_exports__, __webpack_require__) {
+    //   __webpack_require__.r(__webpack_exports__)
+    //   var _test__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/test.js")
+    //   Object(_test__WEBPACK_IMPORTED_MODULE_0__["default"])()
+    // }).call(module.exports, module, module.exports, __webpack_require__)
+
+    // Flag the module as loaded
+    module.l = true;
+
+    // Return the exports of the module
+    return module.exports;
+  }
+
+
+  // expose the modules object (__webpack_modules__)
+  __webpack_require__.m = modules;
+
+  // expose the module cache
+  __webpack_require__.c = installedModules;
+
+  // define getter function for harmony exports
+  __webpack_require__.d = function (exports, name, getter) {
+    if (!__webpack_require__.o(exports, name)) {
+      Object.defineProperty(exports, name, { enumerable: true, get: getter });
+    }
+  };
+
+  // define __esModule on exports
+  __webpack_require__.r = function (exports) {
+    if (typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+      Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+    }
+    Object.defineProperty(exports, '__esModule', { value: true });
+  };
+
+  // create a fake namespace object
+  // mode & 1: value is a module id, require it
+  // mode & 2: merge all properties of value into the ns
+  // mode & 4: return value when already ns object
+  // mode & 8|1: behave like require
+  __webpack_require__.t = function (value, mode) {
+    if (mode & 1) value = __webpack_require__(value);
+    if (mode & 8) return value;
+    if ((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+    var ns = Object.create(null);
+    __webpack_require__.r(ns);
+    Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+    if (mode & 2 && typeof value != 'string') for (var key in value) __webpack_require__.d(ns, key, function (key) { return value[key]; }.bind(null, key));
+    return ns;
+  };
+
+  // getDefaultExport function for compatibility with non-harmony modules
+  __webpack_require__.n = function (module) {
+    var getter = module && module.__esModule ?
+      function getDefault() { return module['default']; } :
+      function getModuleExports() { return module; };
+    __webpack_require__.d(getter, 'a', getter);
+    return getter;
+  };
+
+  // Object.prototype.hasOwnProperty.call
+  __webpack_require__.o = function (object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+
+  // __webpack_public_path__
+  __webpack_require__.p = "./";
+
+
+  // Load entry module and return exports   加载主入口模块
+  return __webpack_require__(__webpack_require__.s = "./src/index.js");
+})
+  /************************************************************************/
+  ({
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! no exports provided */
+/***/ (function (module, __webpack_exports__, __webpack_require__) {
+
+        "use strict";
+        eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _test__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./test */ \"./src/test.js\");\n\r\n\r\nObject(_test__WEBPACK_IMPORTED_MODULE_0__[\"default\"])()\n\n//# sourceURL=webpack:///./src/index.js?");
+
+        /***/
+      }),
+
+/***/ "./src/test.js":
+/*!*********************!*\
+  !*** ./src/test.js ***!
+  \*********************/
+/*! exports provided: default */
+/***/ (function (module, __webpack_exports__, __webpack_require__) {
+        "use strict";
+        eval("__webpack_require__.r(__webpack_exports__);\nconst test = ()=> {\r\n    console.log('----test----')\r\n}\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (test);\n\n//# sourceURL=webpack:///./src/test.js?");
+        /***/
+      })
+
+  });
+```
+通过对打包文件的分析我们发现整个函数的结构其实就是一个自执行函数简化版本大致如下：
+```js
+(function(modules){
+    var installedModules = {};
+  // 0注册一个__webpack_require__函数
+  function __webpack_require__(muduleId) {
+    // 先找缓存结果
+    if (installedModules[moduleId]) {
+      return installedModules[moduleId].exports;
+    }
+    // 如果没有注册到换粗里去
+    var module = installedModules[moduleId] = {
+      i: moduleId, // 模块的名字
+      l: false, // 
+      exports: {} // 模块导出的值
+    }
+    // 执行这个函数
+    modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+  }
+  // 进入主入口文件
+  return __webpack_require__(__webpack_require__.s = "./src/index.js")
+})(
+    {
+        './src/index.js': (function (module, __webpack_exports__, __webpack_require__) {
+        
+        __webpack_require__.r(__webpack_exports__);\n/* harmony import */  
+        var _test__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./test */ "./src/test.js");
+        Object(_test__WEBPACK_IMPORTED_MODULE_0__["default"])()
+        /***/
+      }),
+        './src/test.js': (function (module, __webpack_exports__, __webpack_require__) {
+        __webpack_require__.r(__webpack_exports__)
+        const test = ()=> {    console.log('----test----')}
+        /* harmony default export */ 
+        __webpack_exports__["default"] = (test);
+
+        /***/
+      })
+    }
+)
+```
+分析: 首先进入主入口文件__webpack_require__('./src/index.js'),进入__webpack_require__方法，执行
+modules[moduleId].call(module.exports, module, module.exports, __webpack_require__); 此处的call作用第一是为了修正this，执行函数同时传入参数。modules[moduleId]也就是'./src/index.js'主入口传递进来的函数体
+
+```
+(function (module, __webpack_exports__, __webpack_require__) {
+    __webpack_require__.r(__webpack_exports__)
+    var _test__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/test.js")
+    Object(_test__WEBPACK_IMPORTED_MODULE_0__["default"])()
+
+    
+  }).call(module.exports, module, module.exports, __webpack_require__)
+```
+
+这个时候我们可以看到里面的执行语句__webpack_require__("./src/test.js")，这个时候我们原来是通过递归调用的方式使用
+__webpack_require__的方式加载了./src/test.js文件，那么我们以同样的方式拿到需要执行的函数体
+
+```
+var module = installedModules[moduleId] = {
+    i: moduleId, // 模块的名字
+    l: false, // 
+    exports: {} // 模块导出的值
+};
+
+
+(function (module, module.exports, __webpack_require__) {
+__webpack_require__.r(__webpack_exports__);
+const test = () => {
+    console.log('京城一灯')
+    module.exports["default"] = (test)
+    
+}
+}).call(module.exports, module, module.exports, __webpack_require__)
+```
+  稍微调整了一下这个时候我们可以看到定义的test是通过module.exports["default"] = (test)方式导出的有点像node的module.exports,那么一个简单的打包文件我们就分析完了
+  

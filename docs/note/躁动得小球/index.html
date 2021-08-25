@@ -1,0 +1,41 @@
+<!--
+ * @message: 描述
+ * @Author: Roy
+ * @Email: @163.com
+ * @Github: @163.com
+ * @Date: 2020-09-02 15:33:13
+ * @LastEditors: Roy
+ * @LastEditTime: 2020-09-02 17:19:29
+ * @Deprecated: 否
+ * @FilePath: /my_blog/docs/note/躁动得小球/index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>躁动的小球</title>
+    <style type="text/css">
+    body, html{
+        width: 100%;
+        height: 100%;
+        background:#000;
+    }
+    div{
+        position: absolute;
+        border-radius: 50%;
+    }
+    </style>
+</head>
+<body>
+    <script src="./index.js"></script>
+    <script>
+        for (let index = 0; index < 30; index++) {
+            var circle = new Circle();
+            circle.drawCircle(document.body);
+            circle.run();
+            
+        }
+    </script>
+</body>
+</html>
