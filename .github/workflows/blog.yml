@@ -1,0 +1,32 @@
+name: Roy-Blog
+
+# 触发条件：在 push 到 master 分支后
+on:
+  push:
+    branches:
+      - master
+
+# 任务
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: install
+        run: npm install 
+        
+       # 安装vue-press
+      - name: Add vuepress
+        run: npm install vuepress
+
+      - name: Build
+        run:  npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v2.5.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: docs/.vuepress/dist
