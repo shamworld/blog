@@ -28,5 +28,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@3.7.1
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: docs/.vuepress/dist
+          BRANCH: gh-pages
+          FOLDER: docs/.vuepress/dist
