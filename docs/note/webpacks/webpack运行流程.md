@@ -28,6 +28,60 @@ complier ---> complition ---> Chunk ---> Template
 3.使用Parser从Chunk解析依赖，使用Module和dependency管理代码模块相互关系
 4.使用Template基于complition的数据生成结果代码
 
+## webpack 插件如何实现
+- webpack本质是一个事件流机制，核心模块：tabable(Sync + Async)Hooks 构造出 === Compiler(编译) + Compiletion(创建bundles)
+- compiler对象代表了完整的webpack环境配置。这个对象在启动webpack时被一次性建立，并配置好所有可操作的设置，包括options、loader和plugin。当在webpack环境中应用一插件时，插件将收到此compiler对象的引用。可以使用它来访问webpack的主环境
+compilation对象代表了一次资源版本构建。当运行webpack开发环境中间件时，每当检测到一个文件变化，就会创- 建一个新的compilation,从而生成一个新的编译资源。一个compilation对象表现了当前的模块资源、编译生成资源、变化的文件、以及被跟踪依赖的状态的信息。compilation对象也提供了很多关键时机的回调，以供插件做自定义处理时选择使用
+- 创建一个插件函数，在其prototype上定义apply方法，指定一个webpack自身的事件钩子
+- 函数内部处理webpack内部实例的特定数据
+- 处理完成后，调用webpack提供的回调函数
+```js
+class MyWebpackPlugin{
+  constructor(opts) {
+        this.opts = opts;
+        this.externalModules = {};
+    }
+    apply(compiler) {
+        // 去除注释正则
+        const reg = /("([^\\\"]*(\\.)?)*")|('([^\\\']*(\\.)?)*')|(\/{2,}.*?(\r|\n))|(\/\*(\n|.)*?\*\/)|(\/\*\*\*\*\*\*\/)/g;
+
+        // 注册自定义插件钩子到生成资源到 output 目录之前，拿到compilation对象（编译好的stream）
+        compiler.hooks.emit.tap('RemoveComment', compilation => {
+            // 遍历构建产物
+            Object.keys(compilation.assets).forEach(item => {
+                // .source()是获取构建产物的文本
+                // .assets中包含构建产物的文件名
+                let content = compilation.assets[item].source();
+                content = content.replace(reg, function (word) { // 去除注释后的文本
+                    return /^\/{2,}/.test(word) || /^\/\*!/.test(word) || /^\/\*{3,}\//.test(word) ? "" : word;
+                });
+                // console.info(content);
+                // 更新构建产物对象
+                compilation.assets[item] = {
+                    source: () => content,
+                    size: () => content.length
+                }
+            });
+        });
+    }
+
+}
+
+```
+
+compiler对象的生命周期钩子:
+- beforeRun 清除缓存
+- run 注册缓存数据钩子
+- beforeCompile
+- compile 开始编译
+- make 从入口分析依赖以及间接依赖模块，创建模块对象
+- buildModule 模块构建
+- normalModuleFactory 构建
+- seal 构建结果封装， 不可再更改
+- afterCompile 完成构建，缓存数据
+- emit 输出到dist目录
+
+
 ## webpack的构建流程是什么?从读取配置到输出文件这个过程
 - 初始化参数：从配置文件和 Shell 语句中读取与合并参数，得出最终的参数；
 - 开始编译：用上一步得到的参数初始化 Compiler 对象，加载所有配置的插件，执行对象的 run 方法开始执行编译；
@@ -46,6 +100,20 @@ complier ---> complition ---> Chunk ---> Template
 - 不同的用法
     Loader在module.rules中配置，也就是说他作为模块的解析规则而存在。 类型为数组，每一项都是一个Object，里面描述了对于什么类型的文件（test），使用什么加载(loader)和使用的参数（options）
     Plugin在plugins中单独配置。 类型为数组，每一项是一个plugin的实例，参数都通过构造函数传入。
+
+
+## webpack如何实现持久化缓存
+- 服务端设置http缓存头（cache-control）
+- 打包依赖和运行时到不同的chunk，即作为splitChunk,因为他们几乎是不变的
+- 延迟加载：使用import()方式，可以动态加载的文件分到独立的chunk,以得到自己的chunkhash
+- 保持hash值的稳定：编译过程和文件内通的更改尽量不影响其他文件hash的计算，对于低版本webpack生成的增量数字id不稳定问题，可用hashedModuleIdsPlugin基于文件路径生成解决
+## 如何用webpack来优化前端性能?
+⽤webpack优化前端性能是指优化webpack的输出结果，让打包的最终结果在浏览器运⾏快速⾼效。
+- 压缩代码：删除多余的代码、注释、简化代码的写法等等⽅式。可以利⽤webpack的 UglifyJsPlugin 和 ParallelUglifyPlugin 来压缩JS⽂件， 利⽤ cssnano （css-loader?minimize）来压缩css
+- 利⽤CDN加速: 在构建过程中，将引⽤的静态资源路径修改为CDN上对应的路径。可以利⽤webpack对于 output 参数和各loader的 publicPath 参数来修改资源路径
+- Tree Shaking: 将代码中永远不会⾛到的⽚段删除掉。可以通过在启动webpack时追加参数 --optimize-minimize 来实现
+- Code Splitting: 将代码按路由维度或者组件分块(chunk),这样做到按需加载,同时可以充分利⽤浏览器缓存
+- 提取公共第三⽅库: SplitChunksPlugin插件来进⾏公共模块抽取,利⽤浏览器缓存可以⻓期缓存这些⽆需频繁变动的公共代码
 
 ## 分析打包后的文件
 1.src下创建test.js

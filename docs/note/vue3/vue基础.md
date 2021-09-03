@@ -631,6 +631,234 @@ function createKeyToOldIdx(children, beginIdx, endIdx) {
 - 前端通用的性能优化，如图片懒加载
 - 使用SSR
 
+## Vue原理
+### Vue 的初始化过程（new Vue(options)）都做了什么？
+- 处理组件配置项
+  - 初始化根组件时进行了选项合并操作，将全局配置合并到根组件的局部配置上
+  - 初始化每个子组件时做了一些性能优化，将组件配置对象上的一些深层次属性放到vm.$options选项中，以提高代码的执行效率
+- 初始化组件实例的关系属性，比如$parent、$children、$root、$refs等
+- 处理自定义事件
+- 调用beforeCreate钩子函数
+- 初始化组件的inject配置项，得到`ret[key]=val`形式的配置对象，然后对该配置对象进行响应式处理，并代理每个key到vm实例上
+- 数据响应式，处理props、methods、data、computed、watch等选项
+- 解析组件配置项上的provide对象，将其挂载到vm._provided属性上
+- 调用create钩子函数
+- 如果发现配置选项上有el选项，则自动调用$mount方法，也就是说有了el选项，就不需要在手动调用$mount方法，反之，没提供el选项则必须调用$mount 
+- 接下来进入挂载阶段
+
+## Vue2.x双向数据绑定原理怎么实现的?
+- 响应式的核心是通过 Object.defineProperty 拦截对数据的访问和设置
+- 响应式的数据分为两类：
+  - 对象，循环遍历对象的所有属性，为每个属性设置 getter、setter，以达到拦截访问和设置的目的，如果属性值依旧为对象，则递归为属性值上的每个 key 设置 getter、setter
+    - 访问数据时（obj.key)进行依赖收集，在 dep 中存储相关的 watcher
+    - 设置数据时由 dep 通知相关的 watcher 去更新
+  - 数组，增强数组的那 7 个可以更改自身的原型方法，然后拦截对这些方法的操作
+    - 添加新数据时进行响应式处理，然后由 dep 通知 watcher 去更新
+    - 删除数据时，也要由 dep 通知 watcher 去更新
+
+## methods、computed和watch有什么区别
+- 使用场景
+  - methods一般用于封装一些较为复杂的处理逻辑(同步，异步)
+  - computed一般用于封装一些简单的同步逻辑，将经过处理的数据返回，然后显示在模板中，以减轻模板的重量
+  - watch一般用于当需要在数据变化时执行异步或开销较大的操作
+- 区别
+  - methods和computed
+  > 如果在一次渲染中，有多个地方使用了同一个methods或computed属性，methods会被执行多次，而computed的回调函数则只会执行一次
+
+  > 通过源码我们知道，在一次渲染中，多次访问computedProperty，之后会在第一次执行computed属性的回调函数，后续的其他访问，则直接使用第一次执行结果(watcher.value)，而这一切的实现原理则是通过对watcher.dirty属性控制实现的。而methods，每一次的访问则是简单的方法调用
+  - computed和watch
+  > 通过源码阅读我们知道，computed和watch的本质是一样的，内部都是通过Watcher来实现的，其实没什么区别，非要说区别的话就两点:1.使用场景上的区别，2.computed默认是懒执行的，切不可更改
+  - methods和watch
+  > methods和watch之间其实没什么可比的，完全是两个东西，不过在使用上可以把watch中一些逻辑抽到methods中，提高代码的可读性。
+
+
+## Vue 的异步更新机制是如何实现的？
+
+Vue的异步更新机制的核心是利用浏览器的异步任务队列来实现的，首先选取微任务队列，宏任务队列次之。
+
+当响应式数据更新后，会调用dep.notify()，通知dep中的收集watcher去执行update方法，watcher.update将watcher自己放入一个watcher队列(全局的queue数组)。
+
+然后通过nextTick方法将一个刷新watcher队列的方法(flushSchedulerQueue)放入一个全局的callbacks数组中。
+
+如果此时浏览器的异步任务队列中没有一个叫flushCallbacks的函数，则执行timerFunc函数，将flushCallbacks函数放入异步队列。如果异步任务队列中已经存在flushCallbacks函数，等待其执行完成以后再次放入下一个flushCallbacks函数。
+
+flushCallbacks函数负责执行callbacks数组中的所有flushSchedulerQueue函数。
+
+flushSchedulerQueue函数负责刷新watcher队列，即执行queue数组中每个watcher的run方法，从而进入更新阶段，比如执行组件更新函数或者执行用户watch的回调函数。
+
+## Vue 的 nextTick API 是如何实现的？
+Vue.nextTick 或者 vm.$nextTick 的原理其实很简单，就做了两件事：
+ - 将传递的回调函数用 try catch 包裹然后放入 callbacks 数组
+ - 执行 timerFunc 函数，在浏览器的异步任务队列放入一个刷新 callbacks 数组的函数
+
+## Vue.use(plugin) 做了什么？
+负责安装plugin插件，其实就是执行提供的install方法。
+- 首先判断该插件是否已经安装过了
+- 如果没有，则执行插件提供的install方法来安装插件，具体做什么由插件自己决定
+
+## Vue.mixin(options) 做了什么？
+负责在Vue的全局配置上合并options配置，然后在每个组件生成vnode时会将全局配置合并到组件自身的配置上来。
+- 标准化options对象上的props、inject、directive选项的格式
+- 处理options上的extends和mixins，分别将他们合并到全局配置上
+- 然后将options配置和全局配置进行合并，选项冲突时options配置会覆盖全局配置
+
+## Vue.component(compName, Comp) 做了什么？
+负责注册全局组件。其实就是将组件配置注册到全局配置的components选项上(options.components)，然后各个子组件在生成vnode时会将全局的components选项合并到局部的components配置项上。
+- 如果第二个参数为空，则表示获取compName的组件构造函数
+- 如果Comp是组件配置对象，则使用Vue.extend方法得到组件构造函数，否则直接进行下一步
+- 在全局配置上设置组件信息,`this.options.components.compName=CompConstructor`
+
+## Vue.directive('my-directive', {xx}) 做了什么？
+在全局注册 my-directive 指令，然后每个子组件在生成 vnode 时会将全局的 directives 选项合并到局部的 directives 选项中。原理同 Vue.component 方法：
+- 如果第二个参数为空，则获取指定指令的配置对象
+- 如果不为空，如果第二个参数是一个函数的话，则生成配置对象 { bind: 第二个参数, update: 第二个参数 }
+- 然后将指令配置对象设置到全局配置上，this.options.directives`['my-directive'] = {xx}`
+
+## Vue.filter('my-filter', function(val) {xx}) 做了什么？
+负责在全局注册过滤器 my-filter，然后每个子组件在生成 vnode 时会将全局的 filters 选项合并到局部的 filters 选项中。原理是：
+- 如果没有提供第二个参数，则获取 my-filter 过滤器的回调函数
+- 如果提供了第二个参数，则是设置 `this.options.filters['my-filter'] = function(val) {xx}`。
+
+## Vue.extend(options) 做了什么？
+Vue.extend 基于 Vue 创建一个子类，参数 options 会作为该子类的默认全局配置，就像 Vue 的默认全局配置一样。所以通过 Vue.extend 扩展一个子类，一大用处就是内置一些公共配置，供子类的子类使用。
+- 定义子类构造函数，这里和 Vue 一样，也是调用 _init(options)
+- 合并 Vue 的配置和 options，如果选项冲突，则 options 的选项会覆盖 Vue 的配置项
+- 给子类定义全局 API，值为 Vue 的全局 API，比如 Sub.extend = Super.extend，这样子类同样可以扩展出其它子类
+- 返回子类 Sub
+
+## Vue.set(target, key, val) 做了什么
+由于 Vue 无法探测普通的新增 property (比如 this.myObject.newProperty = 'hi')，所以通过 Vue.set 为向响应式对象中添加一个 property，可以确保这个新 property 同样是响应式的，且触发视图更新。
+- 更新数组指定下标的元素：`Vue.set(array, idx, val)`，内部通过 splice 方法实现响应式更新
+- 更新对象已有属性：`Vue.set(obj, key ,val)`，直接更新即可 => `obj[key] = val`
+- 不能向 Vue 实例或者 $data 动态添加根级别的响应式数据
+- `Vue.set(obj, key, val)`，如果 obj 不是响应式对象，会执行 `obj[key] = val`，但是不会做响应式处理
+- `Vue.set(obj, key, val)`，为响应式对象 obj 增加一个新的 key，则通过 defineReactive 方法设置响应式，并触发依赖更新
+
+
+## Vue.delete(target, key) 做了什么？
+删除对象的 property。如果对象是响应式的，确保删除能触发更新视图。这个方法主要用于避开 Vue 不能检测到 property 被删除的限制，但是你应该很少会使用它。当然同样不能删除根级别的响应式属性。
+- `Vue.delete(array, idx)`，删除指定下标的元素，内部是通过 splice 方法实现的
+- 删除响应式对象上的某个属性：`Vue.delete(obj, key)`，内部是执行 delete obj.key，然后执行依赖更新即可
+
+## Vue.nextTick(cb) 做了什么？
+Vue.nextTick(cb) 方法的作用是延迟回调函数 cb 的执行，一般用于 this.key = newVal 更改数据后，想立即获取更改过后的 DOM 数据：
+```js
+this.key = 'new val'
+
+Vue.nextTick(function() {
+  // DOM 更新了
+})
+
+```
+其内部的执行过程是：
+- `this.key = 'new val'`，触发依赖通知更新，将负责更新的 watcher 放入 watcher 队列
+- 将刷新 watcher 队列的函数放到 callbacks 数组中
+- 在浏览器的异步任务队列中放入一个刷新 callbacks 数组的函数
+- `Vue.nextTick(cb)` 来插队，将 cb 函数放入 callbacks 数组
+- 待将来的某个时刻执行刷新 callbacks 数组的函数
+- 然后执行 callbacks 数组中的众多函数，触发 watcher.run 的执行，更新 DOM
+- 由于 cb 函数是在后面放到 callbacks 数组，所以这就保证了先完成的 DOM 更新，再执行 cb 函数
+
+## vm.$set(obj, key, val) 做了什么？
+vm.$set 用于向响应式对象添加一个新的 property，并确保这个新的 property 同样是响应式的，并触发视图更新。由于 Vue 无法探测对象新增属性或者通过索引为数组新增一个元素，比如：this.obj.newProperty = 'val'、this.arr[3] = 'val'。所以这才有了 vm.$set，它是 Vue.set 的别名。
+- 为对象添加一个新的响应式数据：调用 defineReactive 方法为对象增加响应式数据，然后执行 dep.notify 进行依赖通知，更新视图
+- 为数组添加一个新的响应式数据：通过 splice 方法实现
+
+## vm.$delete(obj, key) 做了什么？
+vm.$delete 用于删除对象上的属性。如果对象是响应式的，且能确保能触发视图更新。该方法主要用于避开 Vue 不能检测属性被删除的情况。它是 Vue.delete 的别名。
+- 删除数组指定下标的元素，内部通过 splice 方法来完成
+- 删除对象上的指定属性，则是先通过 delete 运算符删除该属性，然后执行 dep.notify 进行依赖通知，更新视图
+
+## vm.$watch(expOrFn, callback, [options]) 做了什么？
+vm.$watch 负责观察 Vue 实例上的一个表达式或者一个函数计算结果的变化。当其发生变化时，回调函数就会被执行，并为回调函数传递两个参数，第一个为更新后的新值，第二个为老值。
+
+这里需要 注意 一点的是：如果观察的是一个对象，比如：数组，当你用数组方法，比如 push 为数组新增一个元素时，回调函数被触发时传递的新值和老值相同，因为它们指向同一个引用，所以在观察一个对象并且在回调函数中有新老值是否相等的判断时需要注意。
+vm.$watch 的第一个参数只接收简单的响应式数据的键路径，对于更复杂的表达式建议使用函数作为第一个参数。
+
+至于 vm.$watch 的内部原理是：
+- 设置 options.user = true，标志是一个用户 watcher
+- 实例化一个 Watcher 实例，当检测到数据更新时，通过 watcher 去触发回调函数的执行，并传递新老值作为回调函数的参数
+- 返回一个 unwatch 函数，用于取消观察
+
+
+## vm.$on(event, callback) 做了什么？
+监听当前实例上的自定义事件，事件可由 vm.$emit 触发，回调函数会接收所有传入事件触发函数（vm.$emit）的额外参数。
+
+vm.$on 的原理很简单，就是处理传递的 event 和 callback 两个参数，将注册的事件和回调函数以键值对的形式存储到 vm._event 对象中，vm._events = { eventName: [cb1, cb2, ...], ... }。
+
+## vm.$emit(eventName, [...args]) 做了什么？
+
+触发当前实例上的指定事件，附加参数都会传递给事件的回调函数。
+
+其内部原理就是执行 vm._events[eventName] 中所有的回调函数
+
+
+## vm.$off([event, callback]) 做了什么？
+移除自定义事件监听器，即移除 vm._events 对象上相关数据。
+- 如果没有提供参数，则移除实例的所有事件监听
+- 如果只提供了 event 参数，则移除实例上该事件的所有监听器
+- 如果两个参数都提供了，则移除实例上该事件对应的监听器
+
+## vm.$once(event, callback) 做了什么？
+监听一个自定义事件，但是该事件只会被触发一次。一旦触发以后监听器就会被移除。
+其内部的实现原理是：
+- 包装用户传递的回调函数，当包装函数执行的时候，除了会执行用户回调函数之外还会执行 vm.$off(event, 包装函数) 移除该事件
+- 用 vm.$on(event, 包装函数) 注册事件
+
+## vm._update(vnode, hydrating) 做了什么？
+官方文档没有说明该 API，这是一个用于源码内部的实例方法，负责更新页面，是页面渲染的入口，其内部根据是否存在 prevVnode 来决定是首次渲染，还是页面更新，从而在调用 __patch__ 函数时传递不同的参数。该方法在业务开发中不会用到。
+
+## vm.$forceUpdate() 做了什么？
+迫使 Vue 实例重新渲染，它仅仅影响组件实例本身和插入插槽内容的子组件，而不是所有子组件。其内部原理到也简单，就是直接调用 vm._watcher.update()，它就是 watcher.update() 方法，执行该方法触发组件更新。
+
+## vm.$destroy() 做了什么？
+负责完全销毁一个实例。清理它与其它实例的连接，解绑它的全部指令和事件监听器。在执行过程中会调用 beforeDestroy 和 destroy 两个钩子函数。在大多数业务开发场景下用不到该方法，一般都通过 v-if 指令来操作。其内部原理是：
+- 调用 beforeDestroy 钩子函数
+- 将自己从老爹肚子里（$parent）移除，从而销毁和老爹的关系
+- 通过 watcher.teardown() 来移除依赖监听
+- 通过 vm.__patch__(vnode, null) 方法来销毁节点
+- 调用 destroyed 钩子函数
+- 通过 vm.$off 方法移除所有的事件监听
+
+
+## vm._render 做了什么？
+官方文档没有提供该方法，它是一个用于源码内部的实例方法，负责生成 vnode。其关键代码就一行，执行 render 函数生成 vnode。不过其中加了大量的异常处理代码。
+
+## 什么是Hook Event？
+Hook Event是Vue的自定义事件结合生命周期钩子实现的一种从组件外部为组件注册额外生命周期的功能
+
+## Hook Event 是如果实现的？
+```html
+<comp @hook:lifecycleMethod="method" />
+```
+- 处理组件自定义事件的时候(vm.$on)如果发现组件有`hook:xx`格式的事件(xx为Vue的生命周期)，则将`vm._hasHookEvent`置为`true`，表示该组件有Hook Event
+- 在组件生命周期方法被触发的时候，内部会通过`callHook`方法来执行这些生命周期函数，在生命周期函数执行之后，如果发现`vm._hasHookEvent`为true，则表示当前组件有Hook Event，通过`vm.#emit('hook:xx')`触发Hook Event的执行
+
+## 简单说一下 Vue 的编译器都做了什么？
+Vue 的编译器做了三件事情：
+- 将组件的 html 模版解析成 AST 对象
+- 优化，遍历 AST，为每个节点做静态标记，标记其是否为静态节点，然后进一步标记出静态根节点，这样在后续更新的过程中就可以跳过这些静态节点了；标记静态根用于生成渲染函数阶段，生成静态根节点的渲染函数
+- 从 AST 生成运行时的渲染函数，即大家说的 render，其实还有一个，就是 staticRenderFns 数组，里面存放了所有的静态节点的渲染函数
+
+## 详细说一说编译器的解析过程，它是怎么将 html 字符串模版变成 AST 对象的？
+- 遍历 HTML 模版字符串，通过正则表达式匹配 "<"
+- 跳过某些不需要处理的标签，比如：注释标签、条件注释标签、Doctype。
+  > 备注：整个解析过程的核心是处理开始标签和结束标签
+- 解析开始标签
+  - 得到一个对象，包括 标签名（tagName）、所有的属性（attrs）、标签在 html 模版字符串中的索引位置
+  - 进一步处理上一步得到的 attrs 属性，将其变成 [{ name: attrName, value: attrVal, start: xx, end: xx }, ...] 的形式
+  - 通过标签名、属性对象和当前元素的父元素生成 AST 对象，其实就是一个 普通的 JS 对象，通过 key、value 的形式记录了该元素的一些信息
+  - 接下来进一步处理开始标签上的一些指令，比如 v-pre、v-for、v-if、v-once，并将处理结果放到 AST 对象上
+  - 处理结束将 ast 对象存放到 stack 数组
+  - 处理完成后会截断 html 字符串，将已经处理掉的字符串截掉
+- 解析闭合标签
+  - 如果匹配到结束标签，就从 stack 数组中拿出最后一个元素，它和当前匹配到的结束标签是一对。
+  - 再次处理开始标签上的属性，这些属性和前面处理的不一样，比如：key、ref、scopedSlot、样式等，并将处理结果放到元素的 AST 对象上
+    > 备注 视频中说这块儿有误，回头看了下，没有问题，不需要改，确实是这样
+  - 然后将当前元素和父元素产生联系，给当前元素的 ast 对象设置 parent 属性，然后将自己放到父元素的 ast 对象的 children 数组中
+- 最后遍历完整个 html 模版字符串以后，返回 ast 对象
+
+
 ## Vue3比Vue2有什么优势
 - 性能更好
 - 体积更小

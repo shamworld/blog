@@ -5,7 +5,7 @@
  * @Github: @163.com
  * @Date: 2020-08-08 18:22:53
  * @LastEditors: Roy
- * @LastEditTime: 2021-08-24 17:32:47
+ * @LastEditTime: 2021-09-02 10:19:26
  * @Deprecated: 否
  * @FilePath: /my_blog/docs/.vuepress/sidebar.js
  */
@@ -87,13 +87,7 @@ const note = [
     //         'project/小米商城',
     //     ]
     // },
-    // {
-    //     title: '手写',
-    //     collapsable: true,
-    //     children:[
-    //         'handwritten/手写',
-    //     ]
-    // },
+
     {
         title: 'HTTP',
         collapsable: true,
@@ -109,6 +103,7 @@ const note = [
         collapsable: true,
         children: [
             'webpacks/webpack',
+            'webpacks/webpack运行流程',
             'webpacks/webpack从入门到精通一',
             'webpacks/webpack从入门到精通二',
             'webpacks/webpack从入门到精通三',
