@@ -16,7 +16,7 @@ git add .
 git commit -m 'vue源码'
 
 # 如果你想要部署到 https://USERNAME.github.io
-git push -f https://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@github.com/shamworld/shamworld.github.io.git master
+git push -f https://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@github.com/shamworld/shamworld.github.io.git master
 
 # 如果发布到 https://USERNAME.github.io/<REPO>  REPO=github上的项目
 # git push -f git@github.com:USERNAME/<REPO>.git master:gh-pages

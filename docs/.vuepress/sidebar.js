@@ -5,7 +5,7 @@
  * @Github: @163.com
  * @Date: 2020-08-08 18:22:53
  * @LastEditors: Roy
- * @LastEditTime: 2021-09-02 10:19:26
+ * @LastEditTime: 2021-09-05 16:50:20
  * @Deprecated: 否
  * @FilePath: /my_blog/docs/.vuepress/sidebar.js
  */
@@ -95,7 +95,8 @@ const note = [
             'http/HTTP协议',
             'http/HTTP缓存',
             'http/DNS',
-            'http/TCP-IP'
+            'http/TCP-IP',
+            'http/http基础'
         ]
     },
     {
