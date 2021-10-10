@@ -5,7 +5,7 @@
  * @Github: @163.com
  * @Date: 2020-08-08 18:22:53
  * @LastEditors: Roy
- * @LastEditTime: 2021-09-05 16:50:20
+ * @LastEditTime: 2021-10-10 18:35:59
  * @Deprecated: 否
  * @FilePath: /my_blog/docs/.vuepress/sidebar.js
  */
@@ -153,19 +153,19 @@ const note = [
 
     //     ]
     // },
-    {
-        title: '习题',
-        collapsable: true,
-        children: [
-            'interview/知识点',
-            'interview/宝典一',
-            'interview/宝典二',
-            'interview/前端基础题',
-            'interview/宝典三',
-            'interview/宝典四',
+    // {
+    //     title: '习题',
+    //     collapsable: true,
+    //     children: [
+    //         'interview/知识点',
+    //         'interview/宝典一',
+    //         'interview/宝典二',
+    //         'interview/前端基础题',
+    //         'interview/宝典三',
+    //         'interview/宝典四',
 
-        ]
-    },
+    //     ]
+    // },
 
     {
         title: '忍者秘籍书',

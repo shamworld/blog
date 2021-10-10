@@ -936,7 +936,31 @@ Vue 的 patch 算法有三个作用：负责首次渲染和后续更新或者销
   - v-for 节点的处理结果是可执行的 _l 函数，该函数负责生成 v-for 节点的 vnode
   - 组件的处理结果和普通元素一样，得到的是形如 _c(compName) 的可执行代码，生成组件的 vnode
 
+## history和hash模式的区别是什么?
+- 格式不同
+- 部署方式不同，history需要服务端增加fallback到index.html的配置
+- history对SEO更加友好
 
+## Vue dev模式下为什么不需要配置history fallback?
+webpack-dev-server中配置了historyApiFallback，通过rewrites属性设定了fallback到index.html的逻辑
+
+## 我们并没有定义router-link和router-view，为什么代码里能直接使用?
+app.use(router)时调用vue-router插件，其中主要做了三件事:
+  - 定义router-view和router-link组件
+  - 在vue实例上挂载了$router和$route属性
+  - 通过provide特性向组件透传了currentRoute等属性
+
+## 浏览器中如何实现URL变化但页面不刷新?
+push底层过程中调用了window.history.pushState和window.history.replaceState，确保了URL变化但页面不会刷新
+
+## vue-router如何实现路由匹配?
+- createRouter时通过createRouterMather生成Matcher对象，确定了每个路由对应的正在表达式
+- 路由跳转时会调用push方法，该方法中会调用resolve方法，该方法中会将当前页面路由和正则表达式进行匹配，并获得匹配到的路由Matcher对象
+
+## router-view如何实现组件动态渲染?
+- 通过inject获取currentRoute
+- 通过currentRoute中的Matcher获取需要渲染的组件
+- 通过vue3的h函数动态渲染组件
 
 ## Vue3比Vue2有什么优势
 - 性能更好
