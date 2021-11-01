@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>watch原理 | 码农机器人</title>
+    <meta name="generator" content="VuePress 1.5.3">
+    <link rel="icon" href="/logo.jpg">
+    <meta name="description" content="努力向前">
+    <link rel="preload" href="/assets/css/0.styles.36f06804.css" as="style"><link rel="preload" href="/assets/js/app.f038ea5d.js" as="script"><link rel="preload" href="/assets/js/2.8fa949b0.js" as="script"><link rel="preload" href="/assets/js/88.87f924ce.js" as="script"><link rel="prefetch" href="/assets/js/10.ed293fac.js"><link rel="prefetch" href="/assets/js/100.3f0f293d.js"><link rel="prefetch" href="/assets/js/101.4e99c0f1.js"><link rel="prefetch" href="/assets/js/102.26efe53a.js"><link rel="prefetch" href="/assets/js/103.ba99145c.js"><link rel="prefetch" href="/assets/js/104.db586700.js"><link rel="prefetch" href="/assets/js/105.3f4cb5ee.js"><link rel="prefetch" href="/assets/js/106.b0e018bc.js"><link rel="prefetch" href="/assets/js/107.2f0d0016.js"><link rel="prefetch" href="/assets/js/108.80cef010.js"><link rel="prefetch" href="/assets/js/11.072d810f.js"><link rel="prefetch" href="/assets/js/12.bb621195.js"><link rel="prefetch" href="/assets/js/13.1818e600.js"><link rel="prefetch" href="/assets/js/14.ad627559.js"><link rel="prefetch" href="/assets/js/15.0a7ad009.js"><link rel="prefetch" href="/assets/js/16.4cc7a0a8.js"><link rel="prefetch" href="/assets/js/17.cf7b05ba.js"><link rel="prefetch" href="/assets/js/18.162e03d1.js"><link rel="prefetch" href="/assets/js/19.197a410b.js"><link rel="prefetch" href="/assets/js/20.2fc66560.js"><link rel="prefetch" href="/assets/js/21.30b35824.js"><link rel="prefetch" href="/assets/js/22.5f135ac3.js"><link rel="prefetch" href="/assets/js/23.04883853.js"><link rel="prefetch" href="/assets/js/24.9d666797.js"><link rel="prefetch" href="/assets/js/25.0f45dd0a.js"><link rel="prefetch" href="/assets/js/26.638591ac.js"><link rel="prefetch" href="/assets/js/27.d6bf108a.js"><link rel="prefetch" href="/assets/js/28.dfa65bc1.js"><link rel="prefetch" href="/assets/js/29.14fb341e.js"><link rel="prefetch" href="/assets/js/3.df845a0f.js"><link rel="prefetch" href="/assets/js/30.7a5938e2.js"><link rel="prefetch" href="/assets/js/31.6a17cb7d.js"><link rel="prefetch" href="/assets/js/32.d2827efc.js"><link rel="prefetch" href="/assets/js/33.ae75a8d9.js"><link rel="prefetch" href="/assets/js/34.296f2e30.js"><link rel="prefetch" href="/assets/js/35.b2064323.js"><link rel="prefetch" href="/assets/js/36.0046bb67.js"><link rel="prefetch" href="/assets/js/37.ba891918.js"><link rel="prefetch" href="/assets/js/38.d3431c21.js"><link rel="prefetch" href="/assets/js/39.68613e20.js"><link rel="prefetch" href="/assets/js/4.6f69a0ec.js"><link rel="prefetch" href="/assets/js/40.3c24b563.js"><link rel="prefetch" href="/assets/js/41.d5cf0e80.js"><link rel="prefetch" href="/assets/js/42.d382045e.js"><link rel="prefetch" href="/assets/js/43.078e68a2.js"><link rel="prefetch" href="/assets/js/44.bec9a684.js"><link rel="prefetch" href="/assets/js/45.6b28db99.js"><link rel="prefetch" href="/assets/js/46.d587148c.js"><link rel="prefetch" href="/assets/js/47.6c1b1f0d.js"><link rel="prefetch" href="/assets/js/48.21b1f996.js"><link rel="prefetch" href="/assets/js/49.f0a679bf.js"><link rel="prefetch" href="/assets/js/5.29fae726.js"><link rel="prefetch" href="/assets/js/50.8635f872.js"><link rel="prefetch" href="/assets/js/51.dd140f01.js"><link rel="prefetch" href="/assets/js/52.26f631aa.js"><link rel="prefetch" href="/assets/js/53.f3add058.js"><link rel="prefetch" href="/assets/js/54.f756d00a.js"><link rel="prefetch" href="/assets/js/55.b3ba5b3e.js"><link rel="prefetch" href="/assets/js/56.4dcf8e63.js"><link rel="prefetch" href="/assets/js/57.aa245b79.js"><link rel="prefetch" href="/assets/js/58.a1b1881b.js"><link rel="prefetch" href="/assets/js/59.275a7cfd.js"><link rel="prefetch" href="/assets/js/6.6a9558d6.js"><link rel="prefetch" href="/assets/js/60.9fac0369.js"><link rel="prefetch" href="/assets/js/61.3c62b320.js"><link rel="prefetch" href="/assets/js/62.b5c6a6c5.js"><link rel="prefetch" href="/assets/js/63.1d9f7fbe.js"><link rel="prefetch" href="/assets/js/64.bfe46483.js"><link rel="prefetch" href="/assets/js/65.421abc3b.js"><link rel="prefetch" href="/assets/js/66.127d41bf.js"><link rel="prefetch" href="/assets/js/67.33253334.js"><link rel="prefetch" href="/assets/js/68.802bfa0c.js"><link rel="prefetch" href="/assets/js/69.b90039c7.js"><link rel="prefetch" href="/assets/js/7.20ebb3ce.js"><link rel="prefetch" href="/assets/js/70.a546d08b.js"><link rel="prefetch" href="/assets/js/71.7e300fb8.js"><link rel="prefetch" href="/assets/js/72.d7283940.js"><link rel="prefetch" href="/assets/js/73.8fbfcd15.js"><link rel="prefetch" href="/assets/js/74.3cdd326d.js"><link rel="prefetch" href="/assets/js/75.9b4a55f9.js"><link rel="prefetch" href="/assets/js/76.7367e408.js"><link rel="prefetch" href="/assets/js/77.a5ea1e1d.js"><link rel="prefetch" href="/assets/js/78.62c0c83d.js"><link rel="prefetch" href="/assets/js/79.20ae6b33.js"><link rel="prefetch" href="/assets/js/8.34110c5a.js"><link rel="prefetch" href="/assets/js/80.591b6495.js"><link rel="prefetch" href="/assets/js/81.fb929ad1.js"><link rel="prefetch" href="/assets/js/82.560b381f.js"><link rel="prefetch" href="/assets/js/83.eb4f5181.js"><link rel="prefetch" href="/assets/js/84.2a927c54.js"><link rel="prefetch" href="/assets/js/85.0685cc81.js"><link rel="prefetch" href="/assets/js/86.02826a44.js"><link rel="prefetch" href="/assets/js/87.4104360f.js"><link rel="prefetch" href="/assets/js/89.e907841e.js"><link rel="prefetch" href="/assets/js/9.9450eba1.js"><link rel="prefetch" href="/assets/js/90.ed7713b5.js"><link rel="prefetch" href="/assets/js/91.11be5c5f.js"><link rel="prefetch" href="/assets/js/92.03ca73f8.js"><link rel="prefetch" href="/assets/js/93.4d5cfeea.js"><link rel="prefetch" href="/assets/js/94.a5240ffa.js"><link rel="prefetch" href="/assets/js/95.40e59a02.js"><link rel="prefetch" href="/assets/js/96.671ee618.js"><link rel="prefetch" href="/assets/js/97.0612f27a.js"><link rel="prefetch" href="/assets/js/98.de33209e.js"><link rel="prefetch" href="/assets/js/99.b686994e.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.36f06804.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.jpg" alt="码农机器人" class="logo"> <span class="site-name can-hide">码农机器人</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note/" class="nav-link router-link-active">
+  博客
+</a></div><div class="nav-item"><a href="/react/" class="nav-link">
+  react
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note/" class="nav-link router-link-active">
+  博客
+</a></div><div class="nav-item"><a href="/react/" class="nav-link">
+  react
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>建立前端知识体系</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Vue源码分析</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/note/vue3/vue基础.html" class="sidebar-link">Vue基础</a></li><li><a href="/note/vue3/初始化.html" class="sidebar-link">初始化</a></li><li><a href="/note/vue3/mount.html" class="sidebar-link">$mount解读</a></li><li><a href="/note/vue3/双向绑定.html" class="sidebar-link">双向绑定</a></li><li><a href="/note/vue3/编译器.html" class="sidebar-link">编译器</a></li><li><a href="/note/vue3/数据驱动.html" class="sidebar-link">数据驱动</a></li><li><a href="/note/vue3/nextTick.html" class="sidebar-link">nextTick</a></li><li><a href="/note/vue3/$set原理.html" class="sidebar-link">Vue.$set原理</a></li><li><a href="/note/vue3/watch原理.html" class="active sidebar-link">watch原理</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note/vue3/watch原理.html#watch基本用法" class="sidebar-link">watch基本用法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note/vue3/watch原理.html#监听基本数据类型" class="sidebar-link">监听基本数据类型</a></li><li class="sidebar-sub-header"><a href="/note/vue3/watch原理.html#监听对象" class="sidebar-link">监听对象</a></li><li class="sidebar-sub-header"><a href="/note/vue3/watch原理.html#watch接收参数为数组" class="sidebar-link">watch接收参数为数组</a></li></ul></li><li class="sidebar-sub-header"><a href="/note/vue3/watch原理.html#初始化watch" class="sidebar-link">初始化watch</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note/vue3/watch原理.html#initstate" class="sidebar-link">initState</a></li><li class="sidebar-sub-header"><a href="/note/vue3/watch原理.html#initwatch" class="sidebar-link">initWatch</a></li><li class="sidebar-sub-header"><a href="/note/vue3/watch原理.html#createwatcher" class="sidebar-link">createWatcher</a></li><li class="sidebar-sub-header"><a href="/note/vue3/watch原理.html#watch" class="sidebar-link">$watch</a></li><li class="sidebar-sub-header"><a href="/note/vue3/watch原理.html#watcher" class="sidebar-link">Watcher</a></li></ul></li></ul></li><li><a href="/note/vue3/vuex.html" class="sidebar-link">Vuex</a></li><li><a href="/note/vue3/vue3.html" class="sidebar-link">vue3</a></li><li><a href="/note/vue3/生态系统.html" class="sidebar-link">生态系统</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>提效赋能 前端工程化篇</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>全栈赋能 Node篇</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>程序员PLUS篇</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>HTTP</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webpack</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>性能优化</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Flutter</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>忍者秘籍书</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="watch原理"><a href="#watch原理" class="header-anchor">#</a> watch原理</h1> <p>watch是Vue中的一个监听数据变化的一个方法，我们先看看watch的用法。</p> <h2 id="watch基本用法"><a href="#watch基本用法" class="header-anchor">#</a> watch基本用法</h2> <h3 id="监听基本数据类型"><a href="#监听基本数据类型" class="header-anchor">#</a> 监听基本数据类型</h3> <div class="language- extra-class"><pre class="language-text"><code>&lt;div&gt;
+  {{ name }}
+  &lt;button @click=&quot;changeName&quot;&gt;改变name&lt;/button&gt;
+&lt;/div&gt;
+export default {
+  data() {
+    return {
+      name: 'tanchidemao',
+    }
+  },
+  watch: {
+    name(val, oldval) {
+      console.log(val, oldval)
+    }
+  },
+  methods: {
+    changeName() {
+      this.name = this.name === 'tanchidemao' ? 'cat' : 'tanchidemao'
+    }
+  }
+}
+
+</code></pre></div><p>watch可以接收两个参数，一个是变化之后的数据，一个是变化之前的数据，你可以基于这两个值处理一些逻辑。</p> <h3 id="监听对象"><a href="#监听对象" class="header-anchor">#</a> 监听对象</h3> <div class="language- extra-class"><pre class="language-text"><code>&lt;div&gt;
+  {{ obj.name }}
+  &lt;button @click=&quot;changeName&quot;&gt;改变name&lt;/button&gt;
+&lt;/div&gt;
+export default {
+  data() {
+    return {
+      obj: {
+        name: 'tanchidemao',
+      }
+    }
+  },
+  watch: {
+    obj: {
+      handler(val, oldval) {
+        console.log(val, oldval)
+      },
+      deep: true,
+      immediate: true,
+    }
+  },
+  methods: {
+    changeName() {
+      this.obj.name = this.obj.name === 'tanchidemao' ? 'cat' : 'tanchidemao'
+    }
+  },
+  created() {
+    console.log('created')
+  }
+}
+</code></pre></div><p>在监听对象变化的时候，加上deep这个属性即可深度监听对象数据；如果你想在页面进行时就执行watch方法，加上immediate即可。值得注意的是，设置了immediate属性的watch的执行顺序是在created生命周期之前的。</p> <h3 id="watch接收参数为数组"><a href="#watch接收参数为数组" class="header-anchor">#</a> watch接收参数为数组</h3> <p>我在看Vue源码的时候，发现了一个比较有意思的地方，如果说watch监听的属性不去设置一个方法而是接收一个数组的话，可以向当前监听的属性传递多个方法</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      name<span class="token operator">:</span> <span class="token string">'jack'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  watch<span class="token operator">:</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span> <span class="token function-variable function">handler</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">,</span> immediate<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>val<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">changeName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">===</span> <span class="token string">'tanchidemao'</span> <span class="token operator">?</span> <span class="token string">'cat'</span> <span class="token operator">:</span> <span class="token string">'tanchidemao'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>数组中可以接收不同形式的参数，可以是方法，也可以是一个对象，具体的书写方式和普通的watch没什么不同。</p> <h2 id="初始化watch"><a href="#初始化watch" class="header-anchor">#</a> 初始化watch</h2> <h3 id="initstate"><a href="#initstate" class="header-anchor">#</a> initState</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// src/core/instance/state.js</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">initState</span> <span class="token punctuation">(</span><span class="token parameter">vm<span class="token operator">:</span> Component</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  vm<span class="token punctuation">.</span>_watchers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token keyword">const</span> opts <span class="token operator">=</span> vm<span class="token punctuation">.</span>$options
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>opts<span class="token punctuation">.</span>props<span class="token punctuation">)</span> <span class="token function">initProps</span><span class="token punctuation">(</span>vm<span class="token punctuation">,</span> opts<span class="token punctuation">.</span>props<span class="token punctuation">)</span> <span class="token comment">// 如果有 props ，初始化 props</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>opts<span class="token punctuation">.</span>methods<span class="token punctuation">)</span> <span class="token function">initMethods</span><span class="token punctuation">(</span>vm<span class="token punctuation">,</span> opts<span class="token punctuation">.</span>methods<span class="token punctuation">)</span> <span class="token comment">// 如果有 methods ，初始化 methods 里面的方法</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>opts<span class="token punctuation">.</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 如果有 data 的话，初始化，data；否则响应一个空对象</span>
+    <span class="token function">initData</span><span class="token punctuation">(</span>vm<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">observe</span><span class="token punctuation">(</span>vm<span class="token punctuation">.</span>_data <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token boolean">true</span> <span class="token comment">/* asRootData */</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>opts<span class="token punctuation">.</span>computed<span class="token punctuation">)</span> <span class="token function">initComputed</span><span class="token punctuation">(</span>vm<span class="token punctuation">,</span> opts<span class="token punctuation">.</span>computed<span class="token punctuation">)</span> <span class="token comment">// 如果有 computed ，初始化 computed</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>opts<span class="token punctuation">.</span>watch <span class="token operator">&amp;&amp;</span> opts<span class="token punctuation">.</span>watch <span class="token operator">!==</span> nativeWatch<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 如果有 watch ，初始化 watch</span>
+    <span class="token function">initWatch</span><span class="token punctuation">(</span>vm<span class="token punctuation">,</span> opts<span class="token punctuation">.</span>watch<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>首先在initState初始化watch，如果有watch这个属性的话，就将watch传入initWatch方法中处理</p> <h3 id="initwatch"><a href="#initwatch" class="header-anchor">#</a> initWatch</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// src/core/instance/state.js</span>
+<span class="token keyword">function</span> <span class="token function">initWatch</span> <span class="token punctuation">(</span><span class="token parameter">vm<span class="token operator">:</span> Component<span class="token punctuation">,</span> watch<span class="token operator">:</span> Object</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> key <span class="token keyword">in</span> watch<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> handler <span class="token operator">=</span> watch<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>handler<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> handler<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">createWatcher</span><span class="token punctuation">(</span>vm<span class="token punctuation">,</span> key<span class="token punctuation">,</span> handler<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token function">createWatcher</span><span class="token punctuation">(</span>vm<span class="token punctuation">,</span> key<span class="token punctuation">,</span> handler<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>这个函数主要就是初始化watch，我们可以看到initWatch会遍历watch，然后判断每一个值是否是数组，如果是数组的就遍历这个数组，创建多个回调函数，这块也就解释了上边watch监听的数据可以接收参数为参数原因；如果不是数组的话，就直接创建回调函数。</p> <h3 id="createwatcher"><a href="#createwatcher" class="header-anchor">#</a> createWatcher</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">createWatcher</span> <span class="token punctuation">(</span>
+  <span class="token parameter">vm<span class="token operator">:</span> Component<span class="token punctuation">,</span>
+  expOrFn<span class="token operator">:</span> string <span class="token operator">|</span> Function<span class="token punctuation">,</span>
+  handler<span class="token operator">:</span> any<span class="token punctuation">,</span>
+  options<span class="token operator">?</span><span class="token operator">:</span> Object</span>
+<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isPlainObject</span><span class="token punctuation">(</span>handler<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    options <span class="token operator">=</span> handler
+    handler <span class="token operator">=</span> handler<span class="token punctuation">.</span>handler
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> handler <span class="token operator">===</span> <span class="token string">'string'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    handler <span class="token operator">=</span> vm<span class="token punctuation">[</span>handler<span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> vm<span class="token punctuation">.</span><span class="token function">$watch</span><span class="token punctuation">(</span>expOrFn<span class="token punctuation">,</span> handler<span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>createWatcher中会判断handler是否是对象，如果是对象将handler挂在到options这个属性，在将对象的handler属性提取出来；如果handler是一个字符串的话，会从Vue实例找到这个方法赋值给handler。从这里我们也能看出来，watch还可以支持字符串的写法。执行Vue实例上的$watch方法。</p> <h3 id="watch"><a href="#watch" class="header-anchor">#</a> $watch</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token class-name">Vue</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">$watch</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>
+  <span class="token parameter">expOrFn<span class="token operator">:</span> string <span class="token operator">|</span> Function<span class="token punctuation">,</span>
+  cb<span class="token operator">:</span> any<span class="token punctuation">,</span>
+  options<span class="token operator">?</span><span class="token operator">:</span> Object</span>
+<span class="token punctuation">)</span><span class="token operator">:</span> Function <span class="token punctuation">{</span>
+  <span class="token comment">// 获取 Vue 实例 this</span>
+  <span class="token keyword">const</span> vm<span class="token operator">:</span> Component <span class="token operator">=</span> <span class="token keyword">this</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isPlainObject</span><span class="token punctuation">(</span>cb<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 判断如果 cb 是对象执行 createWatcher</span>
+    <span class="token keyword">return</span> <span class="token function">createWatcher</span><span class="token punctuation">(</span>vm<span class="token punctuation">,</span> expOrFn<span class="token punctuation">,</span> cb<span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  options <span class="token operator">=</span> options <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token comment">// 标记为用户 watcher</span>
+  options<span class="token punctuation">.</span>user <span class="token operator">=</span> <span class="token boolean">true</span>
+  <span class="token comment">// 创建用户 watcher 对象</span>
+  <span class="token keyword">const</span> watcher <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Watcher</span><span class="token punctuation">(</span>vm<span class="token punctuation">,</span> expOrFn<span class="token punctuation">,</span> cb<span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+  <span class="token comment">// 判断 immediate 如果为 true</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>options<span class="token punctuation">.</span>immediate<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 立即执行一次 cb 回调，并且把当前值传入</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      <span class="token function">cb</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>vm<span class="token punctuation">,</span> watcher<span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">handleError</span><span class="token punctuation">(</span>error<span class="token punctuation">,</span> vm<span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">callback for immediate watcher &quot;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>watcher<span class="token punctuation">.</span>expression<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&quot;</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 返回取消监听的方法</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token function">unwatchFn</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    watcher<span class="token punctuation">.</span><span class="token function">teardown</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>$watch函数是Vue的一个实例方法，也就是我们可以使用Vue.$watch去调用。$watch会创建一个Watcher对象，这块也是涉及响应式原理，在watch中改变的数据可以进行数据的响应式变化。同时也会判断是否有immediate这个属性，如果有的话，就直接调用回调。</p> <h3 id="watcher"><a href="#watcher" class="header-anchor">#</a> Watcher</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">Watcher</span> <span class="token punctuation">{</span>
+  vm<span class="token operator">:</span> Component<span class="token punctuation">;</span>
+  expression<span class="token operator">:</span> string<span class="token punctuation">;</span>
+  cb<span class="token operator">:</span> Function<span class="token punctuation">;</span>
+  id<span class="token operator">:</span> number<span class="token punctuation">;</span>
+  deep<span class="token operator">:</span> boolean<span class="token punctuation">;</span>
+  user<span class="token operator">:</span> boolean<span class="token punctuation">;</span>
+  lazy<span class="token operator">:</span> boolean<span class="token punctuation">;</span>
+  sync<span class="token operator">:</span> boolean<span class="token punctuation">;</span>
+  dirty<span class="token operator">:</span> boolean<span class="token punctuation">;</span>
+  active<span class="token operator">:</span> boolean<span class="token punctuation">;</span>
+  deps<span class="token operator">:</span> Array<span class="token operator">&lt;</span>Dep<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+  newDeps<span class="token operator">:</span> Array<span class="token operator">&lt;</span>Dep<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+  depIds<span class="token operator">:</span> SimpleSet<span class="token punctuation">;</span>
+  newDepIds<span class="token operator">:</span> SimpleSet<span class="token punctuation">;</span>
+  before<span class="token operator">:</span> <span class="token operator">?</span>Function<span class="token punctuation">;</span>
+  getter<span class="token operator">:</span> Function<span class="token punctuation">;</span>
+  value<span class="token operator">:</span> any<span class="token punctuation">;</span>
+
+  <span class="token function">constructor</span> <span class="token punctuation">(</span>
+    <span class="token parameter">vm<span class="token operator">:</span> Component<span class="token punctuation">,</span>
+    expOrFn<span class="token operator">:</span> string <span class="token operator">|</span> Function<span class="token punctuation">,</span>
+    cb<span class="token operator">:</span> Function<span class="token punctuation">,</span>
+    options<span class="token operator">?</span><span class="token operator">:</span> <span class="token operator">?</span>Object<span class="token punctuation">,</span>
+    isRenderWatcher<span class="token operator">?</span><span class="token operator">:</span> boolean</span>
+  <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>vm <span class="token operator">=</span> vm
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>isRenderWatcher<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      vm<span class="token punctuation">.</span>_watcher <span class="token operator">=</span> <span class="token keyword">this</span>
+    <span class="token punctuation">}</span>
+    vm<span class="token punctuation">.</span>_watchers<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+    <span class="token comment">// options</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>deep <span class="token operator">=</span> <span class="token operator">!</span><span class="token operator">!</span>options<span class="token punctuation">.</span>deep
+      <span class="token keyword">this</span><span class="token punctuation">.</span>user <span class="token operator">=</span> <span class="token operator">!</span><span class="token operator">!</span>options<span class="token punctuation">.</span>user
+      <span class="token keyword">this</span><span class="token punctuation">.</span>lazy <span class="token operator">=</span> <span class="token operator">!</span><span class="token operator">!</span>options<span class="token punctuation">.</span>lazy
+      <span class="token keyword">this</span><span class="token punctuation">.</span>sync <span class="token operator">=</span> <span class="token operator">!</span><span class="token operator">!</span>options<span class="token punctuation">.</span>sync
+      <span class="token keyword">this</span><span class="token punctuation">.</span>before <span class="token operator">=</span> options<span class="token punctuation">.</span>before
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>deep <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>user <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>lazy <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>sync <span class="token operator">=</span> <span class="token boolean">false</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>cb <span class="token operator">=</span> cb
+    <span class="token keyword">this</span><span class="token punctuation">.</span>id <span class="token operator">=</span> <span class="token operator">++</span>uid <span class="token comment">// uid for batching</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>active <span class="token operator">=</span> <span class="token boolean">true</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>dirty <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>lazy <span class="token comment">// for lazy watchers</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>deps <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>newDeps <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>depIds <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>newDepIds <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>expression <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!==</span> <span class="token string">'production'</span>
+      <span class="token operator">?</span> expOrFn<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token operator">:</span> <span class="token string">''</span>
+    <span class="token comment">// parse expression for getter</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> expOrFn <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>getter <span class="token operator">=</span> expOrFn
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token comment">// expOrFn 是字符串的时候，例如 watch: { 'person.name': function... }</span>
+      <span class="token comment">// parsePath('person.name') 返回一个函数获取 person.name 的值</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>getter <span class="token operator">=</span> <span class="token function">parsePath</span><span class="token punctuation">(</span>expOrFn<span class="token punctuation">)</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>getter<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>getter <span class="token operator">=</span> noop
+        process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!==</span> <span class="token string">'production'</span> <span class="token operator">&amp;&amp;</span> <span class="token function">warn</span><span class="token punctuation">(</span>
+          <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Failed watching path: &quot;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>expOrFn<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&quot; </span><span class="token template-punctuation string">`</span></span> <span class="token operator">+</span>
+          <span class="token string">'Watcher only accepts simple dot-delimited paths. '</span> <span class="token operator">+</span>
+          <span class="token string">'For full control, use a function instead.'</span><span class="token punctuation">,</span>
+          vm
+        <span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>lazy
+      <span class="token operator">?</span> <span class="token keyword">undefined</span>
+      <span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">/**
+   * Evaluate the getter, and re-collect dependencies.
+   */</span>
+  <span class="token comment">/*获得getter的值并且重新进行依赖收集*/</span>
+  <span class="token function">get</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token comment">/*将自身watcher观察者实例设置给Dep.target，用以依赖收集。*/</span>
+    <span class="token function">pushTarget</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> value
+    <span class="token keyword">const</span> vm <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>vm
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      value <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getter</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>vm<span class="token punctuation">,</span> vm<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">/*
+      执行了getter操作，看似执行了渲染操作，其实是执行了依赖收集。
+      在将Dep.target设置为自身观察者实例以后，执行getter操作。
+      譬如说现在的的data中可能有a、b、c三个数据，getter渲染需要依赖a跟c，
+      那么在执行getter的时候就会触发a跟c两个数据的getter函数，
+      在getter函数中即可判断Dep.target是否存在然后完成依赖收集，
+      将该观察者对象放入闭包中的Dep的subs中去。
+    */</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>user<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">handleError</span><span class="token punctuation">(</span>e<span class="token punctuation">,</span> vm<span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">getter for watcher &quot;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>expression<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&quot;</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> e
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+      <span class="token comment">// &quot;touch&quot; every property so they are all tracked as</span>
+      <span class="token comment">// dependencies for deep watching</span>
+      <span class="token comment">/*如果存在deep，则触发每个深层对象的依赖，追踪其变化*/</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>deep<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">/*递归每一个对象或者数组，触发它们的getter，使得对象或数组的每一个成员都被依赖收集，形成一个“深（deep）”依赖关系*/</span>
+        <span class="token function">traverse</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+      <span class="token function">popTarget</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">cleanupDeps</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> value
+  <span class="token punctuation">}</span>
+
+  <span class="token operator">...</span> 其他方法
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>上面的Watcher我省略了一些其他方法，只保留了get函数，我们能在get函数中看到如果有deep属性的话，就会递归处理对象中的每一个属性，以达到深度监听的效果。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note/vue3/$set原理.html" class="prev">
+        Vue.$set原理
+      </a></span> <span class="next"><a href="/note/vue3/vuex.html">
+        Vuex
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><div id="live2d-widget" class="live2d-widget-container" style="position:fixed;right:65px;bottom:0px;width:135px;height:300px;z-index:99999;opacity:0.8;pointer-events:none;"><canvas id="live2d_canvas" width="135" height="300" class="live2d_canvas" style="position:absolute;left:0px;top:0px;width:135px;height:300px;"></canvas></div></div></div>
+    <script src="/assets/js/app.f038ea5d.js" defer></script><script src="/assets/js/2.8fa949b0.js" defer></script><script src="/assets/js/88.87f924ce.js" defer></script>
+  </body>
+</html>
