@@ -5,7 +5,7 @@
  * @Github: @163.com
  * @Date: 2020-08-08 18:22:53
  * @LastEditors: Roy
- * @LastEditTime: 2021-10-10 18:35:59
+ * @LastEditTime: 2021-11-01 10:03:28
  * @Deprecated: 否
  * @FilePath: /my_blog/docs/.vuepress/sidebar.js
  */
@@ -43,6 +43,8 @@ const note = [
             'vue3/编译器',
             'vue3/数据驱动',
             'vue3/nextTick',
+            'vue3/$set原理',
+            'vue3/watch原理',
             'vue3/vuex',
             'vue3/vue3',
             'vue3/生态系统',
