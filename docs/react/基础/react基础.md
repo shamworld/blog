@@ -1,5 +1,7 @@
 # react基础
 
+## React17原理
+React17中的JSX转换不会将JSX转换为React.createElement，而是自动从React的package中引入入口函数并调用。另外此次升级不会改变JSX不会改变JSX语法，旧的JSX转换也将继续工作。
 ## React中的事件处理为什么要bind this？
 首先我们知道React是通过创建虚拟DOM，然后将虚拟DOM生成真实DOM最后插入到页面中，而React生命周期中render方法的作用就是将虚拟DOM渲染成真实DOM。在JSX语法中:`onClick={function}` onClick这个属性本身只是一个"中间变量"。将函数赋值给onClick这个中间变量，后面要进行JSX语法转化，将JSX组件转换成JavaScript对象，进而转换成真实DOM。把onClick作为中间变量，指向一个函数的时候，后面的一些列处理中，使用onClick这个中间变量所指向的函数，里面的this会自然丢失掉了，不是在指向React组件实例了。
 
@@ -45,6 +47,12 @@ function App() {
 - 方便事件的统一管理(如事务机制)
 
 ## setState
+1、 setState只在合成事件和钩子函数中是“异步”的，在原生事件和setTimeout 中都是同步的
+
+2、 setState 的“异步”并不是说内部由异步代码实现，其实本身执行的过程和代码都是同步的，只是合成事件和钩子函数的调用顺序在更新之前导致在合成事件和钩子函数中没法立马拿到更新后的值形成了所谓的“异步”，当然可以通过第二个参数setState(partialState, callback)中的callback拿到更新后的结果
+
+3、 setState 的批量更新优化也是建立在“异步”合成事件、钩子函数之上的，在原生事件和setTimeout 中不会批量更新在“异步”中，如果对同一个值进行多次setState的批量更新，策略会对其进行覆盖取最后一次的执行，如果是同时setState多个不同的值在更新时会对其进行合并批量更新
+
 - 不可变值
 ```js
 // 不可变值（函数式编程，纯函数） - 数组
@@ -638,6 +646,29 @@ const App = () => {
     }/>
 }
 ```
+## ReactDOM.render(element,contrainer,callback)
+在内部返回legacyRenderSubtreeIntoContainer()的调用，判断root是否存在，当不存在时表明首次调用，然后执行updateContainer()函数进行非批量更新，*可以保证更新效率与用户体验*，容器节点里面的所有dom元素都会被替换；后续调用则会调用updateContainer()函数进行算法diff高效的更新。
+
+如果提供了可选的回调函数，该回调函数将在组件被渲染活更新之后被执行。
+
+## diff算法
+### 策略:
+
+- 同级比较，Web UI中DOM节点跨层级的移动操作特别少，可以忽略不计。
+- 拥有不同类型的两个组件将会生成不同的树形结构。例如:div->p,CompA->CompB。
+- 开发者可以通过`key ` prop来暗示哪些子元素在不同的渲染下能保持稳定。
+
+
+
+### 过程
+
+对比两个虚拟dom时会有三种操作:删除，替换和更新
+
+vnode是现在的虚拟dom，newVnode是新虚拟dom。
+- 删除:newVnode不存在时
+- 替换:vnode和newVnode类型不同或key不同时
+- 更新:有相同类型和key但vnode和newVnode不同时
+
 
 ## JSX本质
 JSX 的本质就是一个 React.createElement 函数，它接收多个参数来返回 Vnode
@@ -776,9 +807,105 @@ patch 分为两个阶段
 - useEffect内部不能修改state
 - useEffect可能出现死循环
 
+## 如何在 Redux 中定义 Action
+React中的Action必须具有type属性，该属性指示正在执行Action的类型。必须将它们定义为字符串常量，并且还可以向其添加更多的属性。在Redux中，action被名为Action Creators的函数所创建。
+```js
+function addTodo(text) {
+       return {
+                type: ADD_TODO,
+                 text
+    }
+}
+```
+
+## 对 React 的 refs 了解
+Refs 是 React 中引用的简写。它是一个有助于存储对特定的 React 元素或组件的引用的属性，它将由组件渲染配置函数返回。用于对 render() 返回的特定元素或组件的引用。当需要进行 DOM 测量或向组件添加方法时，它们会派上用场。
+```js
+class ReferenceDemo extends React.Component{
+     display() {
+         const name = this.inputDemo.value;
+         document.getElementById('disp').innerHTML = name;
+     }
+render() {
+    return(
+          <div>
+            Name: <input type="text" ref={input => this.inputDemo = input} />
+            <button name="Click" onClick={this.display}>Click</button>
+            <h2>Hello <span id="disp"></span> !!!</h2>
+          </div>
+    );
+   }
+ }
+```
+
+## react有什么坑点
+1. JSX做表达式判断时候需要强转为boolean类型
+
+如果不使用 !!b 进行强转数据类型会在页面里面输出 0。
+```js
+render() {
+  const b = 0;
+  return <div>
+    {
+      !!b && <div>这是一段文本</div>
+    }
+  </div>
+}
+```
+2.尽量不要在 componentWillReviceProps 里使用 setState，如果一定要使用那么需要判断结束条件不然会出现无限重渲染导致页面崩溃
+
+3.给组件添加ref时候尽量不要使用匿名函数，因为当组件更新的时候匿名函数会被当做新的prop处理，让ref属性接受到新函数的时候，react内部会先清空ref，也就是会以null为回调参数先执行一次ref，这个props然后在以该组件的实例执行一次ref，所以用匿名函数做ref的时候，有的时候去ref赋值后的属性会取到null
+
+4.遍历子节点的时候不要用 index 作为组件的 key 进行传入
+
+## React中的状态是什么？它是如何使用的？
+状态是 React 组件的核心，是数据的来源，必须尽可能简单。基本上状态是确定组件呈现和行为的对象。与props 不同，它们是可变的，并创建动态和交互式组件。可以通过 this.state() 访问它们。
+
+## redux的工作流程
+首先，我们看下几个核心概念：
+
+1、 Store：保存数据的地方，你可以把它看成一个容器，整个应用只能有一个Store。
+
+2、 State：Store对象包含所有数据，如果想得到某个时点的数据，就要对Store生成快照，这种时点的数据集合，就叫做State。
+
+3、 Action：State的变化，会导致View的变化。但是，用户接触不到State，只能接触到View。所以，State的变化必须是View导致的。Action就是View发出的通知，表示State应该要发生变化了。
+
+4、 Action Creator：View要发送多少种消息，就会有多少种Action。如果都手写，会很麻烦，所以我们定义一个函数来生成Action，这个函数就叫Action Creator。
+
+5、 Reducer：Store收到Action以后，必须给出一个新的State，这样View才会发生变化。这种State的计算过程就叫做Reducer。Reducer是一个函数，它接受Action和当前State作为参数，返回一个新的State。
+
+6、 dispatch：是View发出Action的唯一方法。
+
+然后我们过下整个工作流程：
+
+1、 首先，用户（通过View）发出Action，发出方式就用到了dispatch方法。
+
+2、 然后，Store自动调用Reducer，并且传入两个参数：当前State和收到的Action，Reducer会返回新的State
+
+3、 State一旦有变化，Store就会调用监听函数，来更新View。
+
+到这儿为止，一次用户交互流程结束。可以看到，在整个流程中数据都是单向流动的，这种方式保证了流程的清晰。
+
+![](/react/basis/97_11.png)
+
+## 如何理解fiber的
+React Fiber 是一种基于浏览器的单线程调度算法.
+
+React 16之前 ，reconcilation 算法实际上是递归，想要中断递归是很困难的，React 16 开始使用了循环来代替之前的递归.
+
+Fiber：一种将 recocilation （递归 diff），拆分成无数个小任务的算法；它随时能够停止，恢复。停止恢复的时机取决于当前的一帧（16ms）内，还有没有足够的时间允许计算。
 
 
+## Redux遵循的三个原则是什么
+1、  单一事实来源：整个应用的状态存储在单个 store 中的对象/状态树里。单一状态树可以更容易地跟踪随时间的变化，并调试或检查应用程序。
 
+2、  状态是只读的：改变状态的唯一方法是去触发一个动作。动作是描述变化的普通 JS 对象。就像 state 是数据的最小表示一样，该操作是对数据更改的最小表示。
+
+3、  使用纯函数进行更改：为了指定状态树如何通过操作进行转换，你需要纯函数。纯函数是那些返回值仅取决于其参数值的函数。
+
+
+## react 的渲染过程中兄弟节点之间是怎么处理的也就是key值不一样的时候
+通常我们输出节点的时候都是map，一个数组然后返回一个ReactNode，为了方便react内部进行优化，我们必须给每一个reactNode添加key，这个key prop在设计值处不是给开发者用的，而是给react用的，大概的作用就是给每一个reactNode添加一个身份标识，方便react进行识别，在重渲染过程中，如果key一样，若组件属性有所变化则react只更新组件，对应的属性没有变化则不更新，如果key不一样，则react先销毁该组件，然后重新创建该组件
 
 
 

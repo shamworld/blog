@@ -5,7 +5,7 @@
  * @Github: @163.com
  * @Date: 2020-08-08 18:22:53
  * @LastEditors: Roy
- * @LastEditTime: 2021-11-01 10:03:28
+ * @LastEditTime: 2021-12-13 11:47:09
  * @Deprecated: 否
  * @FilePath: /my_blog/docs/.vuepress/sidebar.js
  */
@@ -78,6 +78,17 @@ const note = [
         collapsable: true,
         children: [
             'plus/git校验',
+        ]
+    },
+    {
+        title: 'JavaScript设计模式',
+        collapsable: true,
+        children: [
+            'JavaScript设计模式/创建型设计模式',
+            'JavaScript设计模式/结构型设计模式',
+            'JavaScript设计模式/行为型设计模式',
+            'JavaScript设计模式/技巧型设计模式',
+            'JavaScript设计模式/架构型设计模式',
         ]
     },
     // {
