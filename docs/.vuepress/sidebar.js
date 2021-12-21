@@ -5,7 +5,7 @@
  * @Github: @163.com
  * @Date: 2020-08-08 18:22:53
  * @LastEditors: Roy
- * @LastEditTime: 2021-12-13 11:47:09
+ * @LastEditTime: 2021-12-20 21:51:21
  * @Deprecated: 否
  * @FilePath: /my_blog/docs/.vuepress/sidebar.js
  */
@@ -46,7 +46,7 @@ const note = [
             'vue3/$set原理',
             'vue3/watch原理',
             'vue3/vuex',
-            'vue3/vue3',
+            'vue3/权限管理',
             'vue3/生态系统',
         ]
     },
