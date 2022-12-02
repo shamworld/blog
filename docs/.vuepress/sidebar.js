@@ -78,6 +78,7 @@ const note = [
         collapsable: true,
         children: [
             'plus/git校验',
+            'plus/技巧',
         ]
     },
     {
