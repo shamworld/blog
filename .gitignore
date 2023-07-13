@@ -4,6 +4,7 @@ deploy1.js
 deploy.sh
 expact.exp
 package-lock.json
+/docs/.vuepress/dist/
 
 npm-debug.log*
 yarn-debug.log*
