@@ -17,19 +17,16 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: yarn
-
-      - run: yarn install --frozen-lockfile
 
       - name: install
-        run: yarn install
+        run: npm install
 
         # 安装vue-press
       - name: Add vuepress
-        run: yarn install vuepress
+        run: npm install vuepress
 
       - name: Build
-        run: yarn run build
+        run: npm run build
 
       - name: Deploy to GitHub Pages
         # uses: JamesIves/github-pages-deploy-action@3.7.1
