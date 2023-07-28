@@ -30,6 +30,7 @@ const note = [
             'knowledge/call,apply,bind,new的内部原理实现',
             'knowledge/JavaScript工作原理',
             'knowledge/元编程',
+            'knowledge/JS基础',
         ]
     },
     {
@@ -41,13 +42,13 @@ const note = [
             'vue3/mount',
             'vue3/双向绑定',
             'vue3/编译器',
-            'vue3/数据驱动',
+            // 'vue3/数据驱动',
             'vue3/nextTick',
             'vue3/$set原理',
             'vue3/watch原理',
             'vue3/vuex',
             'vue3/权限管理',
-            'vue3/生态系统',
+            // 'vue3/生态系统',
         ]
     },
 
@@ -65,14 +66,14 @@ const note = [
             "modular/敏捷开发持续集成",
         ]
     },
-    {
-        title: '全栈赋能 Node篇',
-        collapsable: true,
-        children: [
-            'node/node搭建',
-            // 'node/技术闭环',
-        ]
-    },
+    // {
+    //     title: '全栈赋能 Node篇',
+    //     collapsable: true,
+    //     children: [
+    //         'node/node搭建',
+    //         // 'node/技术闭环',
+    //     ]
+    // },
     {
         title: '程序员PLUS篇',
         collapsable: true,

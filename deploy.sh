@@ -14,7 +14,7 @@ cd docs/.vuepress/dist
 # echo 'www.yourwebsite.com' > CNAME
 git init
 git add .
-git commit -m '权限管理'
+git commit -m 'js基础'
 
 # 如果你想要部署到 https://USERNAME.github.io
 git push -f https://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@github.com/shamworld/shamworld.github.io.git master
@@ -24,5 +24,5 @@ git push -f https://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@github.com/shamworl
 
 cd -
 git add .
-git commit -m '权限管理'
+git commit -m 'js基础'
 git push
