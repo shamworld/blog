@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>性能优化基础 | 码农机器人</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/logo.jpg">
+    <meta name="description" content="努力向前">
+    
+    <link rel="preload" href="/assets/css/0.styles.702c69be.css" as="style"><link rel="preload" href="/assets/js/app.7ad03719.js" as="script"><link rel="preload" href="/assets/js/2.b3eacf93.js" as="script"><link rel="preload" href="/assets/js/81.b1ce7ae5.js" as="script"><link rel="prefetch" href="/assets/js/10.8ae3b0fa.js"><link rel="prefetch" href="/assets/js/100.2aac29f1.js"><link rel="prefetch" href="/assets/js/101.95a34757.js"><link rel="prefetch" href="/assets/js/102.726d232c.js"><link rel="prefetch" href="/assets/js/103.69594967.js"><link rel="prefetch" href="/assets/js/104.0eac49de.js"><link rel="prefetch" href="/assets/js/105.15275e07.js"><link rel="prefetch" href="/assets/js/106.30d3677d.js"><link rel="prefetch" href="/assets/js/107.2f7b3f9e.js"><link rel="prefetch" href="/assets/js/108.8cd6fd3e.js"><link rel="prefetch" href="/assets/js/109.c43a375f.js"><link rel="prefetch" href="/assets/js/11.5045f9e2.js"><link rel="prefetch" href="/assets/js/110.89aa1048.js"><link rel="prefetch" href="/assets/js/111.17707d12.js"><link rel="prefetch" href="/assets/js/112.b1f771f4.js"><link rel="prefetch" href="/assets/js/113.b74b3c4b.js"><link rel="prefetch" href="/assets/js/114.3723893a.js"><link rel="prefetch" href="/assets/js/115.8124bcbe.js"><link rel="prefetch" href="/assets/js/116.b4cff2e2.js"><link rel="prefetch" href="/assets/js/117.b61da6ae.js"><link rel="prefetch" href="/assets/js/118.404a1e37.js"><link rel="prefetch" href="/assets/js/119.73225adf.js"><link rel="prefetch" href="/assets/js/12.ca057691.js"><link rel="prefetch" href="/assets/js/13.376b87ad.js"><link rel="prefetch" href="/assets/js/14.4c660388.js"><link rel="prefetch" href="/assets/js/15.a597c712.js"><link rel="prefetch" href="/assets/js/16.d6071957.js"><link rel="prefetch" href="/assets/js/17.db11c77e.js"><link rel="prefetch" href="/assets/js/18.5a87a1b0.js"><link rel="prefetch" href="/assets/js/19.741423ad.js"><link rel="prefetch" href="/assets/js/20.cbca0ec6.js"><link rel="prefetch" href="/assets/js/21.fb8699b6.js"><link rel="prefetch" href="/assets/js/22.f46c60a8.js"><link rel="prefetch" href="/assets/js/23.f904b39c.js"><link rel="prefetch" href="/assets/js/24.3d1ee2c1.js"><link rel="prefetch" href="/assets/js/25.7d4ed5a0.js"><link rel="prefetch" href="/assets/js/26.d571d0bf.js"><link rel="prefetch" href="/assets/js/27.1d4bb701.js"><link rel="prefetch" href="/assets/js/28.007df186.js"><link rel="prefetch" href="/assets/js/29.d88424e0.js"><link rel="prefetch" href="/assets/js/3.939725f9.js"><link rel="prefetch" href="/assets/js/30.a37fd833.js"><link rel="prefetch" href="/assets/js/31.7ecc7963.js"><link rel="prefetch" href="/assets/js/32.409ba384.js"><link rel="prefetch" href="/assets/js/33.d039d1c8.js"><link rel="prefetch" href="/assets/js/34.5859246d.js"><link rel="prefetch" href="/assets/js/35.d985827b.js"><link rel="prefetch" href="/assets/js/36.a7a17303.js"><link rel="prefetch" href="/assets/js/37.abb9cfe7.js"><link rel="prefetch" href="/assets/js/38.fad0d56f.js"><link rel="prefetch" href="/assets/js/39.b350f002.js"><link rel="prefetch" href="/assets/js/4.9d11c90d.js"><link rel="prefetch" href="/assets/js/40.29f60ddc.js"><link rel="prefetch" href="/assets/js/41.2d4d1b88.js"><link rel="prefetch" href="/assets/js/42.7e3d30f8.js"><link rel="prefetch" href="/assets/js/43.1ac56ea1.js"><link rel="prefetch" href="/assets/js/44.ea97f2e2.js"><link rel="prefetch" href="/assets/js/45.6978a358.js"><link rel="prefetch" href="/assets/js/46.9833c297.js"><link rel="prefetch" href="/assets/js/47.ce84d094.js"><link rel="prefetch" href="/assets/js/48.1359e176.js"><link rel="prefetch" href="/assets/js/49.401bc027.js"><link rel="prefetch" href="/assets/js/5.4567470c.js"><link rel="prefetch" href="/assets/js/50.5e7b9608.js"><link rel="prefetch" href="/assets/js/51.2cdc4494.js"><link rel="prefetch" href="/assets/js/52.1dfaaa61.js"><link rel="prefetch" href="/assets/js/53.afe42f3f.js"><link rel="prefetch" href="/assets/js/54.36790444.js"><link rel="prefetch" href="/assets/js/55.a76d6ef9.js"><link rel="prefetch" href="/assets/js/56.bd7c7358.js"><link rel="prefetch" href="/assets/js/57.28181d38.js"><link rel="prefetch" href="/assets/js/58.df8e67c4.js"><link rel="prefetch" href="/assets/js/59.b23cd127.js"><link rel="prefetch" href="/assets/js/6.587cc912.js"><link rel="prefetch" href="/assets/js/60.bd3576fc.js"><link rel="prefetch" href="/assets/js/61.e28fcd11.js"><link rel="prefetch" href="/assets/js/62.1092f591.js"><link rel="prefetch" href="/assets/js/63.faa72537.js"><link rel="prefetch" href="/assets/js/64.e58e9f5c.js"><link rel="prefetch" href="/assets/js/65.78b10912.js"><link rel="prefetch" href="/assets/js/66.f337e761.js"><link rel="prefetch" href="/assets/js/67.1d955908.js"><link rel="prefetch" href="/assets/js/68.ea1abdc7.js"><link rel="prefetch" href="/assets/js/69.bb787d8f.js"><link rel="prefetch" href="/assets/js/7.b4988596.js"><link rel="prefetch" href="/assets/js/70.58e2a9ff.js"><link rel="prefetch" href="/assets/js/71.b10e8ed5.js"><link rel="prefetch" href="/assets/js/72.78084c06.js"><link rel="prefetch" href="/assets/js/73.31388956.js"><link rel="prefetch" href="/assets/js/74.6d26c994.js"><link rel="prefetch" href="/assets/js/75.e69fb0c9.js"><link rel="prefetch" href="/assets/js/76.b4bfd541.js"><link rel="prefetch" href="/assets/js/77.bd13e511.js"><link rel="prefetch" href="/assets/js/78.710ab0b0.js"><link rel="prefetch" href="/assets/js/79.7b432444.js"><link rel="prefetch" href="/assets/js/8.e62a5f68.js"><link rel="prefetch" href="/assets/js/80.9be22a8f.js"><link rel="prefetch" href="/assets/js/82.44fb3379.js"><link rel="prefetch" href="/assets/js/83.5e9f687d.js"><link rel="prefetch" href="/assets/js/84.5995c638.js"><link rel="prefetch" href="/assets/js/85.6055353e.js"><link rel="prefetch" href="/assets/js/86.1eec183d.js"><link rel="prefetch" href="/assets/js/87.1a10f95a.js"><link rel="prefetch" href="/assets/js/88.ebcff0f5.js"><link rel="prefetch" href="/assets/js/89.4aa209f2.js"><link rel="prefetch" href="/assets/js/9.29f05039.js"><link rel="prefetch" href="/assets/js/90.532e0039.js"><link rel="prefetch" href="/assets/js/91.dda01b27.js"><link rel="prefetch" href="/assets/js/92.904286a7.js"><link rel="prefetch" href="/assets/js/93.8f4c15c1.js"><link rel="prefetch" href="/assets/js/94.6de58192.js"><link rel="prefetch" href="/assets/js/95.f3f91c27.js"><link rel="prefetch" href="/assets/js/96.0470a4de.js"><link rel="prefetch" href="/assets/js/97.10c7899a.js"><link rel="prefetch" href="/assets/js/98.e395d641.js"><link rel="prefetch" href="/assets/js/99.bdc5383b.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.702c69be.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.jpg" alt="码农机器人" class="logo"> <span class="site-name can-hide">码农机器人</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note/" class="nav-link router-link-active">
+  博客
+</a></div><div class="nav-item"><a href="/react/" class="nav-link">
+  react
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note/" class="nav-link router-link-active">
+  博客
+</a></div><div class="nav-item"><a href="/react/" class="nav-link">
+  react
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>建立前端知识体系</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Vue源码分析</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>提效赋能 前端工程化篇</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>程序员PLUS篇</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JavaScript设计模式</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>HTTP</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webpack</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>性能优化</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/note/optimization/性能优化初探.html" class="sidebar-link">性能优化初探</a></li><li><a href="/note/optimization/测试网速.html" class="sidebar-link">测试网速</a></li><li><a href="/note/optimization/资源加载顺序.html" class="sidebar-link">资源加载顺序</a></li><li><a href="/note/optimization/浏览器渲染流程.html" class="sidebar-link">浏览器渲染流程</a></li><li><a href="/note/optimization/各项指标的意义.html" class="sidebar-link">各项指标的意义</a></li><li><a href="/note/optimization/Chrome性能分析.html" class="sidebar-link">Chrome性能分析</a></li><li><a href="/note/optimization/资源优化.html" class="sidebar-link">资源优化</a></li><li><a href="/note/optimization/传输加载优化.html" class="sidebar-link">传输加载优化</a></li><li><a href="/note/optimization/用RAIL模型分析性能.html" class="sidebar-link">用RAIL模型分析性能</a></li><li><a href="/note/optimization/performance面板解决性能.html" class="sidebar-link">performance面板解决性能</a></li><li><a href="/note/optimization/Node性能调优.html" class="sidebar-link">Node性能调优</a></li><li><a href="/note/optimization/性能优化基础.html" class="active sidebar-link">性能优化基础</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note/optimization/性能优化基础.html#懒加载的概念" class="sidebar-link">懒加载的概念</a></li><li class="sidebar-sub-header"><a href="/note/optimization/性能优化基础.html#懒加载的特点" class="sidebar-link">懒加载的特点</a></li><li class="sidebar-sub-header"><a href="/note/optimization/性能优化基础.html#回流与重绘的概念及触发条件" class="sidebar-link">回流与重绘的概念及触发条件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note/optimization/性能优化基础.html#回流" class="sidebar-link">回流</a></li><li class="sidebar-sub-header"><a href="/note/optimization/性能优化基础.html#重绘" class="sidebar-link">重绘</a></li></ul></li><li class="sidebar-sub-header"><a href="/note/optimization/性能优化基础.html#如何避免回流与重绘" class="sidebar-link">如何避免回流与重绘？</a></li><li class="sidebar-sub-header"><a href="/note/optimization/性能优化基础.html#如何优化动画" class="sidebar-link">如何优化动画？</a></li><li class="sidebar-sub-header"><a href="/note/optimization/性能优化基础.html#对节流与防抖的理解" class="sidebar-link">对节流与防抖的理解</a></li><li class="sidebar-sub-header"><a href="/note/optimization/性能优化基础.html#如何对项目中的图片进行优化" class="sidebar-link">如何对项目中的图片进行优化？</a></li><li class="sidebar-sub-header"><a href="/note/optimization/性能优化基础.html#常见的图片格式及使用场景" class="sidebar-link">常见的图片格式及使用场景</a></li><li class="sidebar-sub-header"><a href="/note/optimization/性能优化基础.html#如何用-webpack-来优化前端性能" class="sidebar-link">如何⽤ webpack 来优化前端性能？</a></li><li class="sidebar-sub-header"><a href="/note/optimization/性能优化基础.html#如何提高-webpack-的构建速度" class="sidebar-link">如何提⾼ webpack 的构建速度？</a></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Flutter</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>知识点</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>忍者秘籍书</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="性能优化基础"><a href="#性能优化基础" class="header-anchor">#</a> 性能优化基础</h1> <h2 id="懒加载的概念"><a href="#懒加载的概念" class="header-anchor">#</a> 懒加载的概念</h2> <p>懒加载也叫做延迟加载、按需加载，指的是在长网页中延迟加载图片
+数据，是一种较好的网页性能优化的方式。在比较长的网页或应用中，
+如果图片很多，所有的图片都被加载出来，而用户只能看到可视窗口
+的那一部分图片数据，这样就浪费了性能。</p> <p>如果使用图片的懒加载就可以解决以上问题。在滚动屏幕之前，可视
+化区域之外的图片不会进行加载，在滚动屏幕时才加载。这样使得网</p> <p>页的加载速度更快，减少了服务器的负载。懒加载适用于图片较多，页面列表较长（长列表）的场景中。</p> <h2 id="懒加载的特点"><a href="#懒加载的特点" class="header-anchor">#</a> 懒加载的特点</h2> <p>减少无用资源的加载：使用懒加载明显减少了服务器的压力和流量，同时也减小了浏览器的负担。</p> <p>提升用户体验: 如果同时加载较多图片，可能需要等待的时间较长，这样影响了用户体验，而使用懒加载就能大大的提高用户体验。</p> <p>防止加载过多图片而影响其他资源文件的加载 ：会影响网站应用的正常使用。</p> <h2 id="回流与重绘的概念及触发条件"><a href="#回流与重绘的概念及触发条件" class="header-anchor">#</a> 回流与重绘的概念及触发条件</h2> <h3 id="回流"><a href="#回流" class="header-anchor">#</a> 回流</h3> <p>当渲染树中部分或者全部元素的尺寸、结构或者属性发生变化时，浏览器会重新渲染部分或者全部文档的过程就称为回流。</p> <p>下面这些操作会导致回流：</p> <ul><li>页面的首次渲染</li> <li>浏览器的窗口大小发生变化</li> <li>元素的内容发生变化</li> <li>元素的尺寸或者位置发生变化</li> <li>元素的字体大小发生变化</li> <li>激活 CSS 伪类</li> <li>查询某些属性或者调用某些方法</li> <li>添加或者删除可见的 DOM 元素</li></ul> <p>在触发回流（重排）的时候，由于浏览器渲染页面是基于流式布局的，
+所以当触发回流时，会导致周围的 DOM 元素重新排列，它的影响范围有两种：</p> <ul><li>全局范围：从根节点开始，对整个渲染树进行重新布局</li> <li>局部范围：对渲染树的某部分或者一个渲染对象进行重新布局</li></ul> <h3 id="重绘"><a href="#重绘" class="header-anchor">#</a> 重绘</h3> <p>当页面中某些元素的样式发生变化，但是不会影响其在文档流中的位
+置时，浏览器就会对元素进行重新绘制，这个过程就是重绘。</p> <p>下面这些操作会导致重绘：</p> <p>color、background 相关属性：background-color、background-image 等</p> <p>outline 相 关 属 性 ： outline-color 、 outline-width 、text-decoration
+border-radius、visibility、box-shadow</p> <p>注意： 当触发回流时，一定会触发重绘，但是重绘不一定会引发回流。</p> <h2 id="如何避免回流与重绘"><a href="#如何避免回流与重绘" class="header-anchor">#</a> 如何避免回流与重绘？</h2> <p>减少回流与重绘的措施：</p> <ul><li>操作 DOM 时，尽量在低层级的 DOM 节点进行操作</li> <li>不要使用 table 布局， 一个小的改动可能会使整个 table 进行重新布局</li> <li>使用 CSS 的表达式</li> <li>不要频繁操作元素的样式，对于静态页面，可以修改类名，而不是样式。</li> <li>使用 absolute 或者 fixed，使元素脱离文档流，这样他们发生变化就不会影响其他元素</li> <li>避免频繁操作 DOM，可以创建一个文档片段 documentFragment，在它上面应用所有 DOM 操作，
+最后再把它添加到文档中</li> <li>将元素先设置 display: none，操作结束后再把它显示出来。因为在
+display 属性为 none 的元素上进行的 DOM 操作不会引发回流和重绘。</li> <li>将 DOM 的多个读操作（或者写操作）放在一起，而不是读写操作穿插
+着写。这得益于浏览器的渲染队列机制。</li></ul> <p>浏览器针对页面的回流与重绘，进行了自身的优化——渲染队列
+浏览器会将所有的回流、重绘的操作放在一个队列中，当队列中的操
+作到了一定的数量或者到了一定的时间间隔，浏览器就会对队列进行
+批处理。这样就会让多次的回流、重绘变成一次回流重绘。</p> <p>上面，将多个读操作（或者写操作）放在一起，就会等所有的读操作
+进入队列之后执行，这样，原本应该是触发多次回流，变成了只触发
+一次回流。</p> <h2 id="如何优化动画"><a href="#如何优化动画" class="header-anchor">#</a> 如何优化动画？</h2> <p>对于如何优化动画，我们知道，一般情况下，动画需要频繁的操作
+DOM，就就会导致页面的性能问题，我们可以将动画的 position 属性
+设置为 absolute 或者 fixed，将动画脱离文档流，这样他的回流就
+不会影响到页面了。</p> <h2 id="对节流与防抖的理解"><a href="#对节流与防抖的理解" class="header-anchor">#</a> 对节流与防抖的理解</h2> <p>函数防抖是指在事件被触发 n 秒后再执行回调，如果在这 n 秒内事
+件又被触发，则重新计时。这可以使用在一些点击请求的事件上，避
+免因为用户的多次点击向后端发送多次请求。</p> <p>函数节流是指规定一个单位时间，在这个单位时间内，只能有一次触
+发事件的回调函数执行，如果在同一个单位时间内某事件被触发多次，
+只有一次能生效。节流可以使用在 scroll 函数的事件监听上，通过
+事件节流来降低事件调用的频率。</p> <p>防抖函数的应用场景：</p> <p>按钮提交场景：防⽌多次提交按钮，只执⾏最后提交的⼀次</p> <p>服务端验证场景：表单验证需要服务端配合，只执⾏⼀段连续的输⼊
+事件的最后⼀次，还有搜索联想词功能类似⽣存环境请⽤ lodash.debounce</p> <p>节流函数的适⽤场景：</p> <p>拖拽场景：固定时间内只执⾏⼀次，防⽌超⾼频次触发位置变动</p> <p>缩放场景：监控浏览器 resize</p> <p>动画场景：避免短时间内多次触发动画引起性能问题</p> <h2 id="如何对项目中的图片进行优化"><a href="#如何对项目中的图片进行优化" class="header-anchor">#</a> 如何对项目中的图片进行优化？</h2> <p>1.不用图片。很多时候会使用到很多修饰类图片，其实这类修饰图片
+完全可以用 CSS 去代替。</p> <p>2.对于移动端来说，屏幕宽度就那么点，完全没有必要去加载原图浪
+费带宽。一般图片都用 CDN 加载，可以计算出适配屏幕的宽度，然
+后去请求相应裁剪好的图片。</p> <p>3.小图使用 base64 格式</p> <p>4.将多个图标文件整合到一张图片中（雪碧图）</p> <p>5.选择正确的图片格式：</p> <p>对于能够显示 WebP 格式的浏览器尽量使用 WebP 格式。因为 WebP
+格式具有更好的图像数据压缩算法，能带来更小的图片体积，而且拥
+有肉眼识别无差异的图像质量，缺点就是兼容性并不好</p> <p>小图使用 PNG，其实对于大部分图标这类图片，完全可以使用 SVG 代替</p> <p>照片使用 JPEG</p> <h2 id="常见的图片格式及使用场景"><a href="#常见的图片格式及使用场景" class="header-anchor">#</a> 常见的图片格式及使用场景</h2> <p>（1）BMP，是无损的、既支持索引色也支持直接色的点阵图。这种图
+片格式几乎没有对数据进行压缩，所以 BMP 格式的图片通常是较大的
+文件。</p> <p>（2）GIF 是无损的、采用索引色的点阵图。采用 LZW 压缩算法进行
+编码。文件小，是 GIF 格式的优点，同时，GIF 格式还具有支持动画
+以及透明的优点。但是 GIF 格式仅支持 8bit 的索引色，所以 GIF 格
+式适用于对色彩要求不高同时需要文件体积较小的场景。</p> <p>（3）JPEG 是有损的、采用直接色的点阵图。JPEG 的图片的优点是采
+用了直接色，得益于更丰富的色彩，JPEG 非常适合用来存储照片，
+与 GIF 相比，JPEG 不适合用来存储企业 Logo、线框类的图。因为有
+损压缩会导致图片模糊，而直接色的选用，又会导致图片文件较 GIF 更大。</p> <p>（4）PNG-8 是无损的、使用索引色的点阵图。PNG 是一种比较新的图
+片格式，PNG-8 是非常好的 GIF 格式替代者，在可能的情况下，应该
+尽可能的使用 PNG-8 而不是 GIF，因为在相同的图片效果下，PNG-8
+具有更小的文件体积。除此之外，PNG-8 还支持透明度的调节，而 GIF
+并不支持。除非需要动画的支持，否则没有理由使用 GIF 而不是 PNG-8。</p> <p>（5）PNG-24 是无损的、使用直接色的点阵图。PNG-24 的优点在于它
+压缩了图片的数据，使得同样效果的图片，PNG-24 格式的文件大小
+要比 BMP 小得多。当然，PNG24 的图片还是要比 JPEG、GIF、PNG-8
+大得多。</p> <p>（6）SVG 是无损的矢量图。SVG 是矢量图意味着 SVG 图片由直线和曲
+线以及绘制它们的方法组成。当放大 SVG 图片时，看到的还是线和曲
+线，而不会出现像素点。这意味着 SVG 图片在放大时，不会失真，所
+以它非常适合用来绘制 Logo、Icon 等。</p> <p>（7）WebP 是谷歌开发的一种新图片格式，WebP 是同时支持有损和无
+损压缩的、使用直接色的点阵图。从名字就可以看出来它是为 Web 而
+生的，什么叫为 Web 而生呢？就是说相同质量的图片，WebP 具有更
+小的文件体积。现在网站上充满了大量的图片，如果能够降低每一个
+图片的文件大小，那么将大大减少浏览器和服务器之间的数据传输量，
+进而降低访问延迟，提升访问体验。目前只有 Chrome 浏览器和 Opera
+浏览器支持 WebP 格式，兼容性不太好。</p> <p>在无损压缩的情况下，相同质量的 WebP 图片，文件大小要比 PNG 小 26%；</p> <p>在有损压缩的情况下，具有相同图片精度的 WebP 图片，文件大小要
+比 JPEG 小 25%~34%；</p> <p>WebP 图片格式支持图片透明度，一个无损压缩的 WebP 图片，如果要
+支持透明度只需要 22%的格外文件大小。</p> <h2 id="如何用-webpack-来优化前端性能"><a href="#如何用-webpack-来优化前端性能" class="header-anchor">#</a> 如何⽤ webpack 来优化前端性能？</h2> <p>⽤ webpack 优化前端性能是指优化 webpack 的输出结果，让打包的最
+终结果在浏览器运⾏快速⾼效。</p> <p>压缩代码：删除多余的代码、注释、简化代码的写法等等⽅式。可以
+利⽤ webpack 的 UglifyJsPlugin 和 ParallelUglifyPlugin 来压缩
+JS ⽂件， 利⽤ cssnano （css-loader?minimize）来压缩 css</p> <p>利⽤ CDN 加速: 在构建过程中，将引⽤的静态资源路径修改为 CDN 上
+对应的路径。可以利⽤ webpack 对于 output 参数和各 loader 的
+publicPath 参数来修改资源路径</p> <p>Tree Shaking: 将代码中永远不会⾛到的⽚段删除掉。可以通过在启
+动 webpack 时追加参数 --optimize-minimize 来实现</p> <p>Code Splitting: 将代码按路由维度或者组件分块(chunk),这样做
+到按需加载,同时可以充分利⽤浏览器缓存</p> <p>提取公共第三⽅库: SplitChunksPlugin 插件来进⾏公共模块抽取, 利⽤浏览器缓存可以⻓期缓存这些⽆需频繁变动的公共代码</p> <h2 id="如何提高-webpack-的构建速度"><a href="#如何提高-webpack-的构建速度" class="header-anchor">#</a> 如何提⾼ webpack 的构建速度？</h2> <p>1.多⼊⼝情况下，使⽤ CommonsChunkPlugin 来提取公共代码</p> <p>2.通过 externals 配置来提取常⽤库</p> <p>3.利⽤ DllPlugin 和 DllReferencePlugin 预编译资源模块 通过
+DllPlugin 来对那些我们引⽤但是绝对不会修改的 npm 包来进⾏预
+编译，再通过 DllReferencePlugin 将预编译的模块加载进来。</p> <p>4.使⽤ Happypack 实现多线程加速编译</p> <p>5.使⽤ webpack-uglify-parallel 来提升 uglifyPlugin 的压缩速
+度。原理上 webpack-uglify-parallel 采⽤了多核并⾏压缩来提升
+压缩速度</p> <p>6.使⽤ Tree-shaking 和 Scope Hoisting 来剔除多余代码</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">更新时间:</span> <span class="time">8/11/2023, 9:47:44 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note/optimization/Node性能调优.html" class="prev">
+        Node性能调优
+      </a></span> <span class="next"><a href="/note/flutter/搭建Flutter开发环境.html">
+        搭建 Flutter 开发环境
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><div id="live2d-widget" class="live2d-widget-container" style="position:fixed;right:65px;bottom:0px;width:135px;height:300px;z-index:99999;opacity:0.8;pointer-events:none;"><canvas id="live2d_canvas" width="135" height="300" class="live2d_canvas" style="position:absolute;left:0px;top:0px;width:135px;height:300px;"></canvas></div></div></div>
+    <script src="/assets/js/app.7ad03719.js" defer></script><script src="/assets/js/2.b3eacf93.js" defer></script><script src="/assets/js/81.b1ce7ae5.js" defer></script>
+  </body>
+</html>
