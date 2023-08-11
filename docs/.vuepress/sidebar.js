@@ -64,6 +64,7 @@ const note = [
             "modular/前端工程与构建",
             "modular/前端工程与性能优化",
             "modular/敏捷开发持续集成",
+            "modular/工程化基础"
         ]
     },
     // {
@@ -144,7 +145,8 @@ const note = [
             'optimization/传输加载优化',
             'optimization/用RAIL模型分析性能',
             'optimization/performance面板解决性能',
-            'optimization/Node性能调优'
+            'optimization/Node性能调优',
+            'optimization/性能优化基础'
             // 'optimization/性能测试',
             // 'optimization/性能优化一',
             // 'optimization/性能优化二',
@@ -168,19 +170,19 @@ const note = [
 
     //     ]
     // },
-    // {
-    //     title: '习题',
-    //     collapsable: true,
-    //     children: [
-    //         'interview/知识点',
-    //         'interview/宝典一',
-    //         'interview/宝典二',
-    //         'interview/前端基础题',
-    //         'interview/宝典三',
-    //         'interview/宝典四',
+    {
+        title: '知识点',
+        collapsable: true,
+        children: [
+            'interview/知识点',
+            'interview/宝典一',
+            'interview/宝典二',
+            'interview/前端基础题',
+            'interview/宝典三',
+            'interview/宝典四',
 
-    //     ]
-    // },
+        ]
+    },
 
     {
         title: '忍者秘籍书',
