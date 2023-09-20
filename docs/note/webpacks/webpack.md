@@ -1356,7 +1356,7 @@ npm install @babel/plugin-transform-arrow-functions -D
 - @babel/preset-env 可以让你使用最新的 JavaScript 语法，而不需要去管理语法转换器(并且可选的支持目标浏览器环境的 polyfills)
 
 ```js
-module.exports = function() {
+module.exports = function () {
   return { plugins: ["pluginA", "pluginB", "pluginC"] };
 };
 ```
